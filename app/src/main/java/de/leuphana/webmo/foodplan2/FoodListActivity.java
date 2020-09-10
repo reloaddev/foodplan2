@@ -3,6 +3,7 @@ package de.leuphana.webmo.foodplan2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -93,8 +94,14 @@ public class FoodListActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String name = inputFoodname.getText().toString();
-                Food newFood = new Food(Food.genId() ,name, 0, Type.NOTASSIGNED);
-                foodList.add(newFood);
+                if(!name.equals("name of Food") && !name.isEmpty()) {
+                    Food newFood = new Food(Food.genId(), name, 0, Type.NOTASSIGNED);
+                    foodList.add(newFood);
+                    //refresh activity
+                    Intent intent = getIntent();
+                    finish();
+                    startActivity(intent);
+                }
             }
         });
 
