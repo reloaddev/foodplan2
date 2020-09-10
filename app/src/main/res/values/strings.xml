@@ -17,7 +17,9 @@
     <string name="login_name">Name</string>
     <string name="login_password">Password</string>
     <string name="login_successfull">Successfull</string>
+    <string name="logout_successfull">Logout Successfull</string>
     <string name="login_unsuccessfull">Unsuccessfull</string>
+    <string name="logout">Logout</string>
 
     <string name="endtext">This app is part of a Project. Made by Henrik, Max and Jonas.</string>
     <string name="settings_selectlanguage">Select a language:</string>

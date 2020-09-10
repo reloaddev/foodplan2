@@ -28,4 +28,7 @@
     <string name="txt_food_name">Name</string>
     <string name="txt_food_price">Preis</string>
     <string name="txt_food_type">Type</string>
+    <string name="logout">Auslogen</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="logout_successfull">Erfolreich Ausgeloggt</string>
 </resources>
