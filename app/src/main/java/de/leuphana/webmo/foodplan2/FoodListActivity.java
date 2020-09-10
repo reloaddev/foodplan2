@@ -8,12 +8,15 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+
 import android.widget.ListView;
 
 import java.util.List;
 
 import de.leuphana.webmo.foodplan2.structure.Food;
 import de.leuphana.webmo.foodplan2.structure.FoodList;
+import de.leuphana.webmo.foodplan2.structure.Type;
 
 import static android.R.layout.simple_list_item_1;
 
@@ -81,6 +84,17 @@ public class FoodListActivity extends AppCompatActivity {
                         finish();
                     }
                 }
+            }
+        });
+
+        final Button addButton = findViewById(R.id.addButton);
+        final EditText inputFoodname = findViewById(R.id.inputFoodname);
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String name = inputFoodname.getText().toString();
+                Food newFood = new Food(Food.genId() ,name, 0, Type.NOTASSIGNED);
+                foodList.add(newFood);
             }
         });
 
