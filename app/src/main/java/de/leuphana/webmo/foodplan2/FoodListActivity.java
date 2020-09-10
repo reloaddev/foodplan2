@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.List;
@@ -22,6 +23,32 @@ public class FoodListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_list);
+
+        Button navButtonplanfoods =  findViewById(R.id.foodplanButton);
+        Button navButtonlogin =  findViewById(R.id.loginButton);
+        Button navButtonsettings =  findViewById(R.id.settingsButton);
+
+        navButtonplanfoods.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(i);
+            }
+        });
+        navButtonlogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(i);
+            }
+        });
+        navButtonsettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(i);
+            }
+        });
 
         final List<Food> foodList = FoodList.getFoodList().getFoodArrayList();
         List<String> foodNameList = FoodList.getFoodList().getFoodNameList();

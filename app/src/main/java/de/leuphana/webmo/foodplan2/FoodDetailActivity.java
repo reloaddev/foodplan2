@@ -108,6 +108,56 @@ public class FoodDetailActivity extends AppCompatActivity {
             }
         });
 
+        final Button navButtonplanfoods =  findViewById(R.id.foodplanButton);
+        final Button navButtonfoods =  findViewById(R.id.foodsButton);
+        final Button navButtonlogin =  findViewById(R.id.loginButton);
+        final Button navButtonsettings =  findViewById(R.id.settingsButton);
+
+        navButtonplanfoods.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    Intent k = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(k);
+                } catch(Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        navButtonfoods.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    Intent k = new Intent(getApplicationContext(), FoodListActivity.class);
+                    startActivity(k);
+                } catch(Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        navButtonlogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    Intent k = new Intent(getApplicationContext(), FoodListActivity.class);
+                    startActivity(k);
+                } catch(Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        navButtonsettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    Intent k = new Intent(getApplicationContext(), FoodListActivity.class);
+                    startActivity(k);
+                } catch(Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
 
     }
 }

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">foodplan</string>
+    <string name="menu_home">Home</string>
+    <string name="button_back">Zurück</string>
+    <string name="button_delete">Löschen</string>
+    <string name="button_save">Speichern</string>
+    <string name="menu_gallery">Gallerie</string>
+    <string name="button_add">Hinzufügen</string>
+    <string name="editText_nameOfFood">Name des Essens</string>
+    <string name="settings_selectlanguage">Wähle eine Sprache:</string>
+    <string name="login_successfull">Erfolgreich Angemeldet</string>
+    <string name="login_password">Pasword</string>
+    <string name="login_name">Name</string>
+    <string name="menu_settings">Einstellungen</string>
+    <string name="menu_login">Anmelden</string>
+    <string name="menu_foods">Essen</string>
+    <string name="menu_fooddetail">Essensdetail</string>
+    <string name="menu_foodplan">Essensplan</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="nav_header_subtitle">WebMo Projekt</string>
+    <string name="nav_header_title">Essensplan Lüneburg</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="login_unsuccessfull">Falscher Name oder Password</string>
+    <string name="endtext">Diese App ist Teil eines Uni Projekts. Erstellt von Henrik, Max und Jonas.</string>
+    <string name="txt_food_id">Id</string>
+    <string name="txt_food_name">Name</string>
+    <string name="txt_food_price">Preis</string>
+    <string name="txt_food_type">Type</string>
+</resources>

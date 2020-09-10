@@ -1,19 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="bottom">
+
+
+    <Button
+        android:id="@+id/foodplanButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:layout_toStartOf="@+id/foodsButton"
+        android:background="@color/colorPrimary"
+        android:text="@string/menu_foodplan"
+        android:textColor="@android:color/white"></Button>
 
     <Button
         android:id="@+id/foodsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="FOODS"></Button>
+        android:layout_marginEnd="14dp"
+        android:layout_toStartOf="@+id/loginButton"
+        android:text="@string/menu_foods"></Button>
 
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="17dp"
+        android:layout_toStartOf="@+id/settingsButton"
+        android:text="@string/menu_login"></Button>
 
+    <Button
+        android:id="@+id/settingsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="11dp"
+        android:text="@string/menu_settings"></Button>
 
-
-
-</LinearLayout>
+</RelativeLayout>

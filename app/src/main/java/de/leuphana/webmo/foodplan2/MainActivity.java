@@ -14,9 +14,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button navButton1 = (Button) findViewById(R.id.foodsButton);
+        Button navButtonfoods =  findViewById(R.id.foodsButton);
+        Button navButtonlogin =  findViewById(R.id.loginButton);
+        Button navButtonsettings =  findViewById(R.id.settingsButton);
 
-        navButton1.setOnClickListener(new View.OnClickListener() {
+         navButtonfoods.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), FoodListActivity.class);
+                startActivity(i);
+            }
+        });
+        navButtonlogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), FoodListActivity.class);
+                startActivity(i);
+            }
+        });
+        navButtonsettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), FoodListActivity.class);
