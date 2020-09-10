@@ -29,6 +29,14 @@
     <string name="nav_header_title">Foodplan Lüneburg</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
+
+    <string name="txt_monday">Monday</string>
+    <string name="txt_tuesday">Tuesday</string>
+    <string name="txt_wednesday">Wednesday</string>
+    <string name="txt_thursday">Thursday</string>
+    <string name="txt_friday">Friday</string>
+
     <string name="logout">Logout</string>
     <string name="logout_successfull">Logout Successfull</string>
+
 </resources>

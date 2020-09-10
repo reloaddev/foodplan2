@@ -28,7 +28,15 @@
     <string name="txt_food_name">Name</string>
     <string name="txt_food_price">Preis</string>
     <string name="txt_food_type">Type</string>
-    <string name="logout">Auslogen</string>
+
+    <string name="txt_monday">Montag</string>
+    <string name="txt_tuesday">Dienstag</string>
+    <string name="txt_wednesday">Mittwoch</string>
+    <string name="txt_thursday">Donnerstag</string>
+    <string name="txt_friday">Freitag</string>
+
+    <string name="logout">Ausloggen</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="logout_successfull">Erfolreich Ausgeloggt</string>
+
 </resources>
