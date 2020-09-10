@@ -11,21 +11,23 @@
         android:layout_marginVertical="10dp"></ListView>
 
     <EditText
+        android:id="@+id/inputFoodname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Insert new food."></EditText>
+        android:text="@string/editText_nameOfFood"></EditText>
 
     <Button
+        android:id="@+id/addButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Add"></Button>
+        android:text="@string/button_add"></Button>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:gravity="bottom">
+        android:gravity="bottom"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/foodplanButton"
@@ -55,8 +57,8 @@
 
         <Button
             android:id="@+id/settingsButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="95dp"
+            android:layout_height="43dp"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="11dp"
             android:text="@string/menu_settings"></Button>
