@@ -9,30 +9,47 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_settings);
 
-        Button navButtonfoods =  findViewById(R.id.foodsButton);
-        Button navButtonlogin =  findViewById(R.id.loginButton);
-        Button navButtonsettings =  findViewById(R.id.settingsButton);
+
+
+        //NavButtons
+        final Button navButtonplanfoods =  findViewById(R.id.foodplanButton);
+        final Button navButtonfoods =  findViewById(R.id.foodsButton);
+        final Button navButtonlogin =  findViewById(R.id.loginButton);
+        final Button navButtonsettings =  findViewById(R.id.settingsButton);
 
         SharedPreferences sp = getSharedPreferences("login",MODE_PRIVATE);
-
         if ( sp.getBoolean("logged",false)){
             navButtonlogin.setText(R.string.logout);
         }else{
             navButtonlogin.setText(R.string.menu_login);
         }
-
-         navButtonfoods.setOnClickListener(new View.OnClickListener() {
+        navButtonplanfoods.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), FoodListActivity.class);
-                startActivity(i);
+                try {
+                    Intent k = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(k);
+                } catch(Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        navButtonfoods.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    Intent k = new Intent(getApplicationContext(), FoodListActivity.class);
+                    startActivity(k);
+                } catch(Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
         navButtonlogin.setOnClickListener(new View.OnClickListener() {
@@ -51,8 +68,12 @@ public class MainActivity extends AppCompatActivity {
         navButtonsettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), SettingsActivity.class);
-                startActivity(i);
+                try {
+                    Intent k = new Intent(getApplicationContext(), SettingsActivity.class);
+                    startActivity(k);
+                } catch(Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
