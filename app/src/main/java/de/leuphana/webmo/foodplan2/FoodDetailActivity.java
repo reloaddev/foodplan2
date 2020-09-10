@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 import de.leuphana.webmo.foodplan2.structure.Food;
 import de.leuphana.webmo.foodplan2.structure.FoodList;
@@ -58,8 +59,7 @@ public class FoodDetailActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //int id = Integer.parseInt(foodIdView.getText().toString());
-                int id = 1;
+                int id = Integer.parseInt(foodIdView.getText().toString());
                 String name = foodNameView.getText().toString();
                 float price = Float.parseFloat(foodPriceView.getText().toString());
                 String type = foodTypeView.getText().toString();
@@ -75,26 +75,38 @@ public class FoodDetailActivity extends AppCompatActivity {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //int deleteId = Integer.parseInt(foodIdView.getText().toString());
-                int deleteId = 1;
+                int deleteId = Integer.parseInt(foodIdView.getText().toString());
                 ArrayList<Food> foodArrayList = FoodList.getFoodList().getFoodArrayList();
-                for(Food i: foodArrayList) {
-                    if(i.getId() == deleteId) {
-                        foodArrayList.remove(i);
+                ListIterator<Food> iterator = foodArrayList.listIterator();
+
+                while(iterator.hasNext()) {
+                    if (iterator.next().getId() == deleteId) {
+                        iterator.remove();
                     }
                 }
+
                 FoodList.getFoodList().setFoodArrayList(foodArrayList);
 
-                /*try {
+                try {
                     Intent k = new Intent(getApplicationContext(), FoodListActivity.class);
                     startActivity(k);
                 } catch(Exception e) {
                     e.printStackTrace();
-                }*/
+                }
             }
         });
 
-        //return root;
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    Intent k = new Intent(getApplicationContext(), FoodListActivity.class);
+                    startActivity(k);
+                } catch(Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
 
     }
