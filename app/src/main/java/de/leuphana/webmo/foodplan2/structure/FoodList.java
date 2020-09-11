@@ -1,9 +1,10 @@
 package de.leuphana.webmo.foodplan2.structure;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FoodList {
+public class FoodList implements Serializable {
     private static FoodList foodList;
     private ArrayList<Food> foodArrayList = new ArrayList<Food>();
 
