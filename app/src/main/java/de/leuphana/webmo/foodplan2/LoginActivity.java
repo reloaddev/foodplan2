@@ -2,7 +2,6 @@ package de.leuphana.webmo.foodplan2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -31,9 +30,9 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
-        Button navButtonplanfoods =  findViewById(R.id.foodplanButton);
-        Button navButtonfoods =  findViewById(R.id.foodsButton);
-        Button navButtonsettings =  findViewById(R.id.settingsButton);
+        Button navButtonplanfoods =  findViewById(R.id.nav_foodplanButton);
+        Button navButtonfoods =  findViewById(R.id.nav_foodsButton);
+        Button navButtonsettings =  findViewById(R.id.nav_settingsButton);
 
         //Navbar
         navButtonplanfoods.setOnClickListener(new View.OnClickListener() {

@@ -13,7 +13,7 @@
         android:gravity="bottom">
 
         <Button
-            android:id="@+id/foodplanButton"
+            android:id="@+id/nav_foodplanButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="11sp"
@@ -24,7 +24,7 @@
             android:textStyle="bold"></Button>
 
         <Button
-            android:id="@+id/foodsButton"
+            android:id="@+id/nav_foodsButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="14sp"
@@ -34,7 +34,7 @@
             android:textStyle="bold"></Button>
 
         <Button
-            android:id="@+id/loginButton"
+            android:id="@+id/nav_loginButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="17sp"
@@ -44,7 +44,7 @@
             android:textStyle="bold"></Button>
 
         <Button
-            android:id="@+id/settingsButton"
+            android:id="@+id/nav_settingsButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
