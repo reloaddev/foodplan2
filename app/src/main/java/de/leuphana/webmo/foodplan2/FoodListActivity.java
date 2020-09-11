@@ -40,8 +40,27 @@ public class FoodListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_list);
 
+        try {
+            InternalStorage.readObject(this, "foodList");
+        } catch (IOException | ClassNotFoundException e){
+            ArrayList<Food> foodList = FoodList.getFoodList().getFoodArrayList();
+            try {
+                InternalStorage.writeObject(this, "foodList", foodList);
+            } catch (IOException i) {
+                i.printStackTrace();
+            }
+        }
+
+
         createNavigation();
-        fillFoodList();
+
+        try {
+            fillFoodList();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     private void createNavigation() {
@@ -86,9 +105,12 @@ public class FoodListActivity extends AppCompatActivity {
         });
     }
 
-    private void fillFoodList() {
-        final List<Food> foodList = FoodList.getFoodList().getFoodArrayList();
-        List<String> foodNameList = FoodList.getFoodList().getFoodNameList();
+    private void fillFoodList() throws IOException, ClassNotFoundException {
+        final List<Food> foodList = (List<Food>) InternalStorage.readObject(this, "foodList");
+        List<String> foodNameList = new ArrayList<String>();
+        for(Food food: foodList) {
+            foodNameList.add(food.getName());
+        }
 
         final ListView listView = (ListView) findViewById(R.id.foodList);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>
@@ -130,6 +152,11 @@ public class FoodListActivity extends AppCompatActivity {
                 if(!name.equals("name of Food") && !name.isEmpty()) {
                     Food newFood = new Food(Food.genId(), name, 0, Type.NOTASSIGNED);
                     foodList.add(newFood);
+                    try {
+                        InternalStorage.writeObject(getApplicationContext(), "foodList", foodList);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     //refresh activity
                     Intent intent = getIntent();
                     finish();
