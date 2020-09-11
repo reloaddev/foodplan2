@@ -42,16 +42,6 @@ public class FoodListActivity extends AppCompatActivity {
 
         createNavigation();
         fillFoodList();
-
-        ArrayList<Food> foodPlanList = FoodList.getFoodList().getFoodArrayList();
-
-        try {
-            InternalStorage.writeObject(this, "foodPlanList", foodPlanList);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
     }
 
     private void createNavigation() {

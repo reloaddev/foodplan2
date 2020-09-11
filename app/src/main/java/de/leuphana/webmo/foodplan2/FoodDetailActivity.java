@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
@@ -134,9 +135,9 @@ public class FoodDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
-                    Intent passFood_intent = new Intent(getApplicationContext(), MainActivity.class);
-                    passFood_intent.putExtra("food", finalFood.getName());
-                    startActivity(passFood_intent);
+                    ArrayList<Food> foodPlanList = (ArrayList<Food>) InternalStorage.readObject(getApplicationContext(), "foodPlanList");
+                    foodPlanList.add(finalFood);
+                    InternalStorage.writeObject(getApplicationContext(), "foodPlanList", foodPlanList);
                 } catch (Exception e){
                     e.printStackTrace();
                 }
