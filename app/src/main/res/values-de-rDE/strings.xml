@@ -38,5 +38,6 @@
     <string name="logout">Ausloggen</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="logout_successfull">Erfolreich Ausgeloggt</string>
+    <string name="button_addToFoodplan">Zum Foodplan hinzufügen</string>
 
 </resources>
