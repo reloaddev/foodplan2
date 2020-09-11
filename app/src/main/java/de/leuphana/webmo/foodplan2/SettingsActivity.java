@@ -19,10 +19,10 @@ public class SettingsActivity extends AppCompatActivity {
 
 
         //NavButtons
-        final Button navButtonplanfoods =  findViewById(R.id.foodplanButton);
-        final Button navButtonfoods =  findViewById(R.id.foodsButton);
-        final Button navButtonlogin =  findViewById(R.id.loginButton);
-        final Button navButtonsettings =  findViewById(R.id.settingsButton);
+        final Button navButtonplanfoods =  findViewById(R.id.nav_foodplanButton);
+        final Button navButtonfoods =  findViewById(R.id.nav_foodsButton);
+        final Button navButtonlogin =  findViewById(R.id.nav_loginButton);
+        final Button navButtonsettings =  findViewById(R.id.nav_settingsButton);
 
         SharedPreferences sp = getSharedPreferences("login",MODE_PRIVATE);
         if ( sp.getBoolean("logged",false)){
