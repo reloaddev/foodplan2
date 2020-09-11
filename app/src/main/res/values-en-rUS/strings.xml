@@ -38,5 +38,6 @@
 
     <string name="logout">Logout</string>
     <string name="logout_successfull">Logout Successfull</string>
+    <string name="button_addToFoodplan">Add to foodplan</string>
 
 </resources>

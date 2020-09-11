@@ -40,9 +40,11 @@
     <string name="txt_food_price">FOODPRICE</string>
     <string name="txt_food_type">FOODTYPE</string>
 
+
     <string name="button_save">Save</string>
     <string name="button_delete">Delete</string>
     <string name="button_back">Back</string>
+    <string name="button_addToFoodplan">ADD TO FOODPLAN</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_home">Home</string>
 

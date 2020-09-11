@@ -53,17 +53,18 @@ public class FoodDetailActivity extends AppCompatActivity {
         final EditText foodTypeView = findViewById(R.id.foodTypeVal);
         foodTypeView.setText(food.getType().toString());
 
+        //DetailButtons
         final Button saveButton = findViewById(R.id.saveButton);
         final Button deleteButton = findViewById(R.id.deleteButton);
         final Button backButton = findViewById(R.id.backButton);
+        final Button addToFoodplanButton = findViewById(R.id.addToFoodplanButton);
 
-        final TextView result = findViewById((R.id.tvResult));
+
         //NavButtons
         final Button navButtonplanfoods =  findViewById(R.id.foodplanButton);
         final Button navButtonfoods =  findViewById(R.id.foodsButton);
         final Button navButtonlogin =  findViewById(R.id.loginButton);
         final Button navButtonsettings =  findViewById(R.id.settingsButton);
-
 
         SharedPreferences sp = getSharedPreferences("login",MODE_PRIVATE);
         if ( sp.getBoolean("logged",false)){
@@ -84,7 +85,6 @@ public class FoodDetailActivity extends AppCompatActivity {
                 String name = foodNameView.getText().toString();
                 float price = Float.parseFloat(foodPriceView.getText().toString());
                 String type = foodTypeView.getText().toString();
-                result.setText("ID: " + id + " | NAME: " + name + " | PRICE: " + price + " | " + type);
                 Food updatedFood = new Food(id, name, price, Type.valueOf(type));
 
                 ArrayList<Food> foodArrayList = FoodList.getFoodList().getFoodArrayList();
@@ -124,6 +124,20 @@ public class FoodDetailActivity extends AppCompatActivity {
                     Intent k = new Intent(getApplicationContext(), FoodListActivity.class);
                     startActivity(k);
                 } catch(Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        final Food finalFood = food;
+        addToFoodplanButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    Intent passFood_intent = new Intent(getApplicationContext(), MainActivity.class);
+                    passFood_intent.putExtra("food", finalFood.getName());
+                    startActivity(passFood_intent);
+                } catch (Exception e){
                     e.printStackTrace();
                 }
             }
