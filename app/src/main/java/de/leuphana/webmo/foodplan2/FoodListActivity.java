@@ -2,12 +2,14 @@ package de.leuphana.webmo.foodplan2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 
 import android.content.SharedPreferences;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -17,6 +19,12 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import de.leuphana.webmo.foodplan2.structure.Food;
@@ -34,6 +42,16 @@ public class FoodListActivity extends AppCompatActivity {
 
         createNavigation();
         fillFoodList();
+
+        ArrayList<Food> foodPlanList = FoodList.getFoodList().getFoodArrayList();
+
+        try {
+            InternalStorage.writeObject(this, "foodPlanList", foodPlanList);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     private void createNavigation() {

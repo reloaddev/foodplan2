@@ -1,8 +1,9 @@
 package de.leuphana.webmo.foodplan2.structure;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Food {
+public class Food implements Serializable {
     private int id;
     private String name;
     private float price;

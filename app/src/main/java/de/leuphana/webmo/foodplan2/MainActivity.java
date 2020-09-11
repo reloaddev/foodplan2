@@ -5,12 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 
 import android.widget.GridView;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInput;
+import java.io.ObjectInputStream;
 import java.util.List;
 
 import de.leuphana.webmo.foodplan2.structure.Food;
@@ -21,10 +26,21 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = "MAIN_ACTIVITY";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        FoodList foodPlanList = FoodList.getFoodList();
+
+        try {
+            InternalStorage.writeObject(this, "foodPlanList", foodPlanList);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
 
 
 
@@ -76,9 +92,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void fillFoodPlan(){
+        FoodList foodList = null;
+        try {
+            foodList = (FoodList) InternalStorage.readObject(this, "foodPlanList");
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+            Log.d(TAG, "fillFoodPlan: " + foodList);
+            //foodList = FoodList.getFoodList();
+        }
         // fill monday grid with food 1-3
         final GridView gridMondayFoods = findViewById(R.id.gridMonday);
-        List<String> foodNameList = FoodList.getFoodList().getFoodNameList();
+        List<String> foodNameList = foodList.getFoodNameList();
+
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(0, 3));
         gridMondayFoods.setAdapter(adapter);
