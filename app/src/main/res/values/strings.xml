@@ -47,10 +47,10 @@
     <string name="menu_home">Home</string>
 
     <!--Activity Main/FoodList-->
-    <string name="txt_monday">Monday</string>
-    <string name="txt_tuesday">Tuesday</string>
-    <string name="txt_wednesday">Wednesday</string>
-    <string name="txt_thursday">Thursday</string>
-    <string name="txt_friday">Friday</string>
+    <string name="txt_monday">MON</string>
+    <string name="txt_tuesday">TUE</string>
+    <string name="txt_wednesday">WED</string>
+    <string name="txt_thursday">THU</string>
+    <string name="txt_friday">FRI</string>
 
 </resources>

@@ -92,26 +92,26 @@
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
             android:text="@string/menu_foodplan"
-            android:textColor="@android:color/white">
-            android:gravity="bottom">
-        </Button>
+            android:textColor="@android:color/white"
+            android:gravity="bottom"/>
 
         <Button
             android:id="@+id/foodsButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="bottom"
-            android:text="@string/menu_foods"></Button>
+            android:text="@string/menu_foods"/>
+
         <Button
             android:id="@+id/loginButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/menu_login"></Button>
+            android:text="@string/menu_login"/>
         <Button
             android:id="@+id/settingsButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/menu_settings"></Button>
+            android:text="@string/menu_settings"/>
     </GridLayout>
 </LinearLayout>
 
