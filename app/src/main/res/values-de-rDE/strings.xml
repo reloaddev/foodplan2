@@ -29,11 +29,11 @@
     <string name="txt_food_price">Preis</string>
     <string name="txt_food_type">Type</string>
 
-    <string name="txt_monday">Montag</string>
-    <string name="txt_tuesday">Dienstag</string>
-    <string name="txt_wednesday">Mittwoch</string>
-    <string name="txt_thursday">Donnerstag</string>
-    <string name="txt_friday">Freitag</string>
+    <string name="txt_monday">MON</string>
+    <string name="txt_tuesday">DIE</string>
+    <string name="txt_wednesday">MIT</string>
+    <string name="txt_thursday">DON</string>
+    <string name="txt_friday">FRE</string>
 
     <string name="logout">Ausloggen</string>
     <string name="nav_header_desc">Navigation header</string>
