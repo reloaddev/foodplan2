@@ -32,6 +32,11 @@ public class FoodListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_list);
 
+        createNavigation();
+        fillFoodList();
+    }
+
+    private void createNavigation() {
         Button navButtonplanfoods =  findViewById(R.id.foodplanButton);
         Button navButtonlogin =  findViewById(R.id.loginButton);
         Button navButtonsettings =  findViewById(R.id.settingsButton);
@@ -71,15 +76,15 @@ public class FoodListActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
 
+    private void fillFoodList() {
         final List<Food> foodList = FoodList.getFoodList().getFoodArrayList();
         List<String> foodNameList = FoodList.getFoodList().getFoodNameList();
 
         final ListView listView = (ListView) findViewById(R.id.foodList);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>
                 (getApplicationContext(), simple_list_item_1, foodNameList);
-
-
 
         listView.setAdapter(adapter);
 
@@ -124,6 +129,5 @@ public class FoodListActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 }

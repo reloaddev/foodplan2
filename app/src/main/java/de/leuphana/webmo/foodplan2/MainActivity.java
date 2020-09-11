@@ -26,6 +26,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
+        createNavigation();
+        fillFoodPlan();
+    }
+
+    private void createNavigation(){
+
         Button navButtonfoods =  findViewById(R.id.foodsButton);
         Button navButtonlogin =  findViewById(R.id.loginButton);
         Button navButtonsettings =  findViewById(R.id.settingsButton);
@@ -38,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             navButtonlogin.setText(R.string.menu_login);
         }
 
-         navButtonfoods.setOnClickListener(new View.OnClickListener() {
+        navButtonfoods.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), FoodListActivity.class);
@@ -65,7 +73,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
 
+    private void fillFoodPlan(){
         // fill monday grid with food 1-3
         final GridView gridMondayFoods = findViewById(R.id.gridMonday);
         List<String> foodNameList = FoodList.getFoodList().getFoodNameList();
@@ -96,11 +106,5 @@ public class MainActivity extends AppCompatActivity {
         adapter = new ArrayAdapter<String>(
                 getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(12, 15));
         gridFridayFoods.setAdapter(adapter);
-
-
-
-
-
-
     }
 }
