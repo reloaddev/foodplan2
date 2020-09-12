@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -165,4 +166,36 @@ public class FoodListActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void configureSearchBar()throws IOException, ClassNotFoundException {
+      ListView listView = (ListView) findViewById(R.id.foodList);
+      SearchView  editsearch = (SearchView) findViewById(R.id.searchView);
+
+        final List<Food> foodList = (List<Food>) InternalStorage.readObject(this, "foodList");
+        List<String> foodNameList = new ArrayList<String>();
+        for(Food food: foodList) {
+            foodNameList.add(food.getName());
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>
+                (getApplicationContext(), simple_list_item_1, foodNameList);
+
+        listView.setAdapter(adapter);
+
+        editsearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                String text = newText;
+                // adapter.filter(text);
+                return false;
+            }
+        });
+    }
+
+
 }
