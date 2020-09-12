@@ -81,42 +81,59 @@
         android:layout_height="80dp"
         android:numColumns="3" />
 
-
-
-    <GridLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="horizontal">
+
         <Button
-            android:id="@+id/foodplanButton"
+            android:id="@+id/nav_foodplanButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
+            android:layout_gravity="top"
+            android:layout_marginStart="11sp"
+            android:layout_marginEnd="11sp"
+            android:background="@drawable/my_button_border"
             android:text="@string/menu_foodplan"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/nav_foodsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_marginEnd="14sp"
+            android:background="@color/colorPrimary"
+            android:text="@string/menu_foods"
             android:textColor="@android:color/white"
-            android:gravity="bottom"/>
+            android:textStyle="bold" />
 
         <Button
-            android:id="@+id/foodsButton"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_row="0"
-            android:layout_column="1"
-            android:gravity="bottom"
-
-            android:text="@string/menu_foods"/>
-
-
-        <Button
-            android:id="@+id/loginButton"
+            android:id="@+id/nav_loginButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/menu_login"/>
+            android:layout_gravity="top"
+            android:layout_marginEnd="17sp"
+            android:background="@color/colorPrimary"
+            android:text="@string/menu_login"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+
         <Button
-            android:id="@+id/settingsButton"
+            android:id="@+id/nav_settingsButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/menu_settings"/>
-    </GridLayout>
+            android:layout_gravity="top"
+            android:layout_marginEnd="11sp"
+            android:background="@color/colorPrimary"
+            android:text="@string/menu_settings"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
 </LinearLayout>
 
 

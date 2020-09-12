@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
+    android:gravity="bottom"
     android:orientation="vertical">
 
     <TableLayout
@@ -137,35 +138,48 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="bottom"
+        android:gravity="bottom|top"
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/foodplanButton"
+            android:id="@+id/nav_foodplanButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
-            android:text="@string/menu_foodplan"></Button>
+            android:layout_marginStart="11sp"
+            android:layout_marginEnd="11sp"
+            android:background="@color/colorPrimary"
+            android:text="@string/menu_foodplan"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"></Button>
 
         <Button
-            android:id="@+id/foodsButton"
+            android:id="@+id/nav_foodsButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
-            android:text="@string/menu_foods"></Button>
+            android:layout_marginEnd="14sp"
+            android:background="@color/colorPrimary"
+            android:text="@string/menu_foods"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"></Button>
 
         <Button
-            android:id="@+id/loginButton"
+            android:id="@+id/nav_loginButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
-            android:text="@string/menu_login"></Button>
+            android:layout_marginEnd="17sp"
+            android:background="@color/colorPrimary"
+            android:text="@string/menu_login"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"></Button>
 
         <Button
-            android:id="@+id/settingsButton"
+            android:id="@+id/nav_settingsButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="11dp"
-            android:text="@string/menu_settings"></Button>
+            android:layout_marginEnd="11sp"
+            android:background="@color/colorPrimary"
+            android:text="@string/menu_settings"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"></Button>
     </LinearLayout>
 </LinearLayout>

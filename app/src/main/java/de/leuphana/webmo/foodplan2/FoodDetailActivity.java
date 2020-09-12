@@ -2,7 +2,6 @@ package de.leuphana.webmo.foodplan2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,7 +11,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
@@ -62,10 +60,10 @@ public class FoodDetailActivity extends AppCompatActivity {
 
 
         //NavButtons
-        final Button navButtonplanfoods =  findViewById(R.id.foodplanButton);
-        final Button navButtonfoods =  findViewById(R.id.foodsButton);
-        final Button navButtonlogin =  findViewById(R.id.loginButton);
-        final Button navButtonsettings =  findViewById(R.id.settingsButton);
+        final Button navButtonplanfoods =  findViewById(R.id.nav_foodplanButton);
+        final Button navButtonfoods =  findViewById(R.id.nav_foodsButton);
+        final Button navButtonlogin =  findViewById(R.id.nav_loginButton);
+        final Button navButtonsettings =  findViewById(R.id.nav_settingsButton);
 
         SharedPreferences sp = getSharedPreferences("login",MODE_PRIVATE);
         if ( sp.getBoolean("logged",false)){

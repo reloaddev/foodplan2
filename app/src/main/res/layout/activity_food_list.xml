@@ -4,6 +4,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:iconifiedByDefault="false"/>
+
     <ListView
         android:id="@+id/foodList"
         android:layout_width="match_parent"
@@ -30,42 +36,53 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/foodplanButton"
+            android:id="@+id/nav_foodplanButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="12sp"
-            android:layout_toStartOf="@+id/foodsButton"
             android:layout_gravity="top"
-            android:text="@string/menu_foodplan"></Button>
-
-        <Button
-            android:id="@+id/foodsButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="14sp"
-            android:layout_toStartOf="@+id/loginButton"
-            android:background="@color/colorPrimary"
-            android:text="@string/menu_foods"
-            android:layout_gravity="top"
-            android:textColor="@android:color/white"></Button>
-
-        <Button
-            android:id="@+id/loginButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="17sp"
-            android:layout_gravity="top"
-            android:layout_toStartOf="@+id/settingsButton"
-            android:text="@string/menu_login"></Button>
-
-        <Button
-            android:id="@+id/settingsButton"
-            android:layout_width="95dp"
-            android:layout_height="43dp"
-            android:layout_alignParentEnd="true"
+            android:layout_marginStart="11sp"
             android:layout_marginEnd="11sp"
+            android:layout_toStartOf="@+id/nav_foodsButton"
+            android:background="@color/colorPrimary"
+            android:text="@string/menu_foodplan"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"></Button>
+
+        <Button
+            android:id="@+id/nav_foodsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="top"
-            android:text="@string/menu_settings"></Button>
+            android:layout_marginEnd="14sp"
+            android:layout_toStartOf="@+id/nav_loginButton"
+            android:background="@drawable/my_button_border"
+            android:text="@string/menu_foods"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"></Button>
+
+        <Button
+            android:id="@+id/nav_loginButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:layout_marginEnd="17sp"
+            android:layout_toStartOf="@+id/nav_settingsButton"
+            android:background="@color/colorPrimary"
+            android:text="@string/menu_login"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"></Button>
+
+        <Button
+            android:id="@+id/nav_settingsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="top"
+            android:layout_marginEnd="11sp"
+            android:background="@color/colorPrimary"
+            android:text="@string/menu_settings"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"></Button>
     </LinearLayout>
 
 </LinearLayout>

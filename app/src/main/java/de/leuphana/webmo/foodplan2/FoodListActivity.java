@@ -2,14 +2,11 @@ package de.leuphana.webmo.foodplan2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 
 import android.content.SharedPreferences;
 
-import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -20,11 +17,7 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectOutput;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,9 +58,9 @@ public class FoodListActivity extends AppCompatActivity {
     }
 
     private void createNavigation() {
-        Button navButtonplanfoods =  findViewById(R.id.foodplanButton);
-        Button navButtonlogin =  findViewById(R.id.loginButton);
-        Button navButtonsettings =  findViewById(R.id.settingsButton);
+        Button navButtonplanfoods =  findViewById(R.id.nav_foodplanButton);
+        Button navButtonlogin =  findViewById(R.id.nav_loginButton);
+        Button navButtonsettings =  findViewById(R.id.nav_settingsButton);
 
         //TODO Hide ADD und Test
         SharedPreferences sp = getSharedPreferences("login",MODE_PRIVATE);
@@ -191,7 +184,9 @@ public class FoodListActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String newText) {
                 String text = newText;
+
                 // adapter.filter(text);
+
                 return false;
             }
         });

@@ -5,22 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 
 import android.widget.GridView;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.ObjectInput;
-import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import de.leuphana.webmo.foodplan2.structure.Food;
-import de.leuphana.webmo.foodplan2.structure.FoodList;
 
 import android.widget.Toast;
 
@@ -51,9 +46,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void createNavigation(){
 
-        Button navButtonfoods =  findViewById(R.id.foodsButton);
-        Button navButtonlogin =  findViewById(R.id.loginButton);
-        Button navButtonsettings =  findViewById(R.id.settingsButton);
+        Button navButtonfoods =  findViewById(R.id.nav_foodsButton);
+        Button navButtonlogin =  findViewById(R.id.nav_loginButton);
+        Button navButtonsettings =  findViewById(R.id.nav_settingsButton);
 
         SharedPreferences sp = getSharedPreferences("login",MODE_PRIVATE);
 
