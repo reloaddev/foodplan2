@@ -184,7 +184,9 @@ public class FoodListActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String newText) {
                 String text = newText;
-                adapter.filter(text);
+
+                // adapter.filter(text);
+
                 return false;
             }
         });
