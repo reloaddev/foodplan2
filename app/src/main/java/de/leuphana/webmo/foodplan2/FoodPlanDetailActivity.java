@@ -19,38 +19,53 @@ import de.leuphana.webmo.foodplan2.structure.Food;
 import de.leuphana.webmo.foodplan2.structure.FoodList;
 import de.leuphana.webmo.foodplan2.structure.Type;
 
-public class FoodDetailActivity extends AppCompatActivity {
+public class FoodPlanDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_food_detail);
+        setContentView(R.layout.activity_food_plan_detail);
 
         Bundle bundle = getIntent().getExtras();
         int foodId = -1;
-        if (bundle != null) {
+        if(bundle != null) {
             foodId = bundle.getInt("foodId");
         }
 
         createNavigation();
         createFoodDetailView(foodId);
+
     }
 
-    public void createNavigation() {
+    private void createNavigation() {
+        Button navButtonplanFoods = findViewById(R.id.nav_foodplanButton);
+        Button navButtonLogin = findViewById(R.id.nav_loginButton);
+        Button navButtonFoods = findViewById(R.id.nav_foodsButton);
 
-        //NavButtons
-        final Button navButtonPlanFoods = findViewById(R.id.nav_foodplanButton);
-        final Button navButtonFoods = findViewById(R.id.nav_foodsButton);
+        SharedPreferences sp = getSharedPreferences("login", MODE_PRIVATE);
+        if (sp.getBoolean("logged", false)) {
+            navButtonLogin.setText(R.string.logout);
+        } else {
+            navButtonLogin.setText(R.string.menu_login);
+        }
 
-
-        navButtonPlanFoods.setOnClickListener(new View.OnClickListener() {
+        navButtonplanFoods.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try {
-                    Intent k = new Intent(getApplicationContext(), MainActivity.class);
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(i);
+            }
+        });
+        navButtonLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences sp = getSharedPreferences("login", MODE_PRIVATE);
+                if (sp.getBoolean("logged", false)) {
+                    sp.edit().putBoolean("logged", false).apply();
+                    Toast.makeText(getApplicationContext(), R.string.logout_successfull, Toast.LENGTH_LONG).show();
+                } else {
+                    Intent k = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(k);
-                } catch (Exception e) {
-                    e.printStackTrace();
                 }
             }
         });
@@ -67,7 +82,7 @@ public class FoodDetailActivity extends AppCompatActivity {
         });
     }
 
-    public void createFoodDetailView(int foodId) {
+    private void createFoodDetailView(int foodId) {
         List<Food> foodList = FoodList.getFoodList().getFoodArrayList();
         Food food = new Food(-1, "Undefined", 0.00f, Type.NOTASSIGNED);
         for (Food foodIterator : foodList) {
@@ -88,20 +103,15 @@ public class FoodDetailActivity extends AppCompatActivity {
         foodTypeView.setText(food.getType().toString());
 
         //DetailButtons
-        final Button saveButton = findViewById(R.id.saveButton);
         final Button deleteButton = findViewById(R.id.deleteButton);
         final Button backButton = findViewById(R.id.backButton);
-        final Button addToFoodplanButton = findViewById(R.id.addToFoodplanButton);
         final Button navButtonLogin = findViewById(R.id.nav_loginButton);
 
         SharedPreferences sp = getSharedPreferences("login", MODE_PRIVATE);
         if (sp.getBoolean("logged", false)) {
-            saveButton.setVisibility(View.VISIBLE);
             deleteButton.setVisibility(View.VISIBLE);
             navButtonLogin.setText(R.string.logout);
-
         } else {
-            saveButton.setVisibility(View.INVISIBLE);
             deleteButton.setVisibility(View.INVISIBLE);
             navButtonLogin.setText(R.string.menu_login);
         }
@@ -120,20 +130,6 @@ public class FoodDetailActivity extends AppCompatActivity {
             }
         });
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int id = Integer.parseInt(foodIdView.getText().toString());
-                String name = foodNameView.getText().toString();
-                float price = Float.parseFloat(foodPriceView.getText().toString());
-                String type = foodTypeView.getText().toString();
-                Food updatedFood = new Food(id, name, price, Type.valueOf(type));
-
-                ArrayList<Food> foodArrayList = FoodList.getFoodList().getFoodArrayList();
-                foodArrayList.add(updatedFood);
-                FoodList.getFoodList().setFoodArrayList(foodArrayList);
-            }
-        });
 
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,7 +159,7 @@ public class FoodDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
-                    Intent k = new Intent(getApplicationContext(), FoodListActivity.class);
+                    Intent k = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(k);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -171,18 +167,5 @@ public class FoodDetailActivity extends AppCompatActivity {
             }
         });
 
-        final Food finalFood = food;
-        addToFoodplanButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try {
-                    ArrayList<Food> foodPlanList = (ArrayList<Food>) InternalStorage.readObject(getApplicationContext(), "foodPlanList");
-                    foodPlanList.add(finalFood);
-                    InternalStorage.writeObject(getApplicationContext(), "foodPlanList", foodPlanList);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
     }
 }
