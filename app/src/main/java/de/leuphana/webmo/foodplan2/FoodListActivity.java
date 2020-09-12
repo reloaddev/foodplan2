@@ -137,11 +137,6 @@ public class FoodListActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String name = inputFoodname.getText().toString();
                 if(!name.equals("name of Food") && !name.isEmpty()) {
-                    for(Food food: foodList) {
-                        if(food.getName().equals(inputFoodname)) {
-                            Toast.makeText(getApplicationContext(), "Foodname already taken.", Toast.LENGTH_SHORT);
-                        }
-                    }
                     Food newFood = new Food(Food.genId(), name, 0, Type.NOTASSIGNED);
                     foodList.add(newFood);
                     try {

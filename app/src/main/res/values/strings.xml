@@ -44,6 +44,8 @@
     <string name="button_save">Save</string>
     <string name="button_delete">Delete</string>
     <string name="button_back">Back</string>
+    <string name="button_delete_foodplan">Delete from foodplan</string>
+    <string name="button_back_foodplan">Back to foodplan</string>
     <string name="button_addToFoodplan">ADD TO FOODPLAN</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_home">Home</string>

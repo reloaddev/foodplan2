@@ -39,5 +39,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="logout_successfull">Erfolreich Ausgeloggt</string>
     <string name="button_addToFoodplan">Zum Foodplan hinzufügen</string>
+    <string name="button_delete_foodplan">Löschen aus Essensplan</string>
+    <string name="button_back_foodplan">Zurück zum Essensplan</string>
 
 </resources>
