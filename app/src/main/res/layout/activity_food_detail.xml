@@ -151,8 +151,16 @@
             android:id="@+id/foodsButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+<<<<<<< Updated upstream
             android:layout_marginEnd="12dp"
             android:text="@string/menu_foods"></Button>
+=======
+            android:layout_marginEnd="14sp"
+            android:background="@drawable/my_button_border"
+            android:text="@string/menu_foods"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"></Button>
+>>>>>>> Stashed changes
 
         <Button
             android:id="@+id/loginButton"

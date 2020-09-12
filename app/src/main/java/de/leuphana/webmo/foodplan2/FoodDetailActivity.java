@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -33,10 +34,54 @@ public class FoodDetailActivity extends AppCompatActivity {
             foodId = bundle.getInt("foodId");
         }
 
+<<<<<<< Updated upstream
         List<Food> foodList = FoodList.getFoodList().getFoodArrayList();
         Food food = new Food(-1, "Undefined", 0.00f,Type.NOTASSIGNED);
         for(Food foodIterator: foodList) {
             if(foodIterator.getId()==foodId){
+=======
+        createNavigation();
+        try {
+            createFoodDetailView(foodId);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void createNavigation() {
+        //NavButtons
+        final Button navButtonPlanFoods = findViewById(R.id.nav_foodplanButton);
+        final Button navButtonFoods = findViewById(R.id.nav_foodsButton);
+        navButtonPlanFoods.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    Intent k = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(k);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        navButtonFoods.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    Intent k = new Intent(getApplicationContext(), FoodListActivity.class);
+                    startActivity(k);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    public void createFoodDetailView(int foodId) throws IOException, ClassNotFoundException {
+        final List<Food> foodList = (List<Food>) InternalStorage.readObject(getApplicationContext(), "foodList");
+        Food food = new Food(-1, "Undefined", 0.00f, Type.NOTASSIGNED);
+        for (Food foodIterator : foodList) {
+            if (foodIterator.getId() == foodId) {
+>>>>>>> Stashed changes
                 food = foodIterator;
             }
         }
@@ -145,9 +190,17 @@ public class FoodDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
+<<<<<<< Updated upstream
                     Intent k = new Intent(getApplicationContext(), FoodListActivity.class);
                     startActivity(k);
                 } catch(Exception e) {
+=======
+                    ArrayList<Food> foodPlanList = (ArrayList<Food>) InternalStorage.readObject(getApplicationContext(), "foodPlanList");
+                    foodPlanList.add(finalFood);
+                    InternalStorage.writeObject(getApplicationContext(), "foodPlanList", foodPlanList);
+                    Toast.makeText(getApplicationContext(), R.string.addedToFoodplan, Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+>>>>>>> Stashed changes
                     e.printStackTrace();
                 }
             }

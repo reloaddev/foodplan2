@@ -133,9 +133,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="11sp"
             android:layout_marginEnd="11sp"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/my_button_border"
             android:text="@string/menu_foodplan"
-            android:textColor="@android:color/white"
+            android:textColor="@color/colorPrimary"
             android:textStyle="bold"></Button>
 
         <Button
