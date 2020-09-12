@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".FoodplanDetailActivity"
     android:background="#ffffff"
     android:gravity="bottom"
     android:orientation="vertical">
+
 
     <TableLayout
         android:layout_width="match_parent"
@@ -103,28 +106,12 @@
     </TableLayout>
 
     <Button
-        android:id="@+id/saveButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginVertical="5dp"
-        android:text="@string/button_save" />
-
-    <Button
         android:id="@+id/deleteButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
         android:layout_marginVertical="5dp"
-        android:text="@string/button_delete" />
-
-    <Button
-        android:id="@+id/addToFoodplanButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginVertical="5dp"
-        android:text="@string/button_addToFoodplan" />
+        android:text="@string/button_deletefromfoodplan" />
 
     <Button
         android:id="@+id/backButton"
@@ -132,9 +119,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
         android:layout_marginVertical="5dp"
-
-        android:text="@string/button_back" />
-
+        android:text="@string/button_backtofoodplan" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -143,29 +128,28 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/nav_foodplanButton"
+            android:id="@+id/foodplanButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="11sp"
             android:layout_marginEnd="11sp"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/my_button_border"
             android:text="@string/menu_foodplan"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"></Button>
+
+        <Button
+            android:id="@+id/foodsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="14sp"
+            android:background="@color/colorPrimary"
+            android:text="@string/menu_foods"
             android:textColor="@android:color/white"
             android:textStyle="bold"></Button>
 
         <Button
-            android:id="@+id/nav_foodsButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="14sp"
-            android:background="@drawable/my_button_border"
-            android:text="@string/menu_foods"
-            android:textColor="@color/colorPrimary"
-            android:textStyle="bold"></Button>
-
-
-        <Button
-            android:id="@+id/nav_loginButton"
+            android:id="@+id/loginButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="17sp"
@@ -175,7 +159,7 @@
             android:textStyle="bold"></Button>
 
         <Button
-            android:id="@+id/nav_settingsButton"
+            android:id="@+id/settingsButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="11sp"
@@ -184,4 +168,5 @@
             android:textColor="@android:color/white"
             android:textStyle="bold"></Button>
     </LinearLayout>
+
 </LinearLayout>

@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">foodplan</string>
-    <string name="menu_home">Home</string>
     <string name="button_back">Zurück</string>
     <string name="button_delete">Löschen</string>
     <string name="button_save">Speichern</string>
-    <string name="menu_gallery">Gallerie</string>
     <string name="button_add">Hinzufügen</string>
     <string name="editText_nameOfFood">Name des Essens</string>
-    <string name="settings_selectlanguage">Wähle eine Sprache:</string>
     <string name="login_successfull">Erfolgreich Angemeldet</string>
-    <string name="login_password">Pasword</string>
+    <string name="login_password">Essensplan Lüneburg</string>
     <string name="login_name">Name</string>
     <string name="menu_settings">Einstellungen</string>
     <string name="menu_login">Anmelden</string>
@@ -23,11 +20,37 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="login_unsuccessfull">Falscher Name oder Password</string>
-    <string name="endtext">Diese App ist Teil eines Uni Projekts. Erstellt von Henrik, Max und Jonas.</string>
     <string name="txt_food_id">Id</string>
     <string name="txt_food_name">Name</string>
     <string name="txt_food_price">Preis</string>
     <string name="txt_food_type">Type</string>
+
+
+    <string name="txt_monday">Montag</string>
+    <string name="txt_tuesday">Dienstag</string>
+    <string name="txt_wednesday">Mittwoch</string>
+    <string name="txt_thursday">Donnerstag</string>
+    <string name="txt_friday">Freitag</string>
+    <string name="logout">Ausloggen</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="logout_successfull">Erfolreich Ausgeloggt</string>
+
+
+    <string name="txt_monday">Montag</string>
+    <string name="txt_tuesday">Dienstag</string>
+    <string name="txt_wednesday">Mittwoch</string>
+    <string name="txt_thursday">Donnerstag</string>
+    <string name="txt_friday">Freitag</string>
+    <string name="button_addToFoodplan">Zum Foodplan hinzufügen</string>
+
+    <string name="button_backtofoodplan">Zurück zum Essensplan</string>
+    <string name="button_deletefromfoodplan">Löschen aus Foodplan</string>
+
+    <string name="button_delete_foodplan">Löschen aus Essensplan</string>
+    <string name="button_back_foodplan">Zurück zum Essensplan</string>
+    <string name="addedToFoodplan">Hinzugefügt</string>
+    <string name="txt_week">Woche:</string>
+
 
     <string name="txt_monday">MON</string>
     <string name="txt_tuesday">DIE</string>
@@ -40,6 +63,6 @@
     <string name="logout_successfull">Erfolreich Ausgeloggt</string>
     <string name="button_addToFoodplan">Zum Foodplan hinzufügen</string>
     <string name="button_delete_foodplan">Löschen aus Essensplan</string>
-    <string name="button_back_foodplan">Zurück zum Essensplan</string>
+
 
 </resources>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">foodplan</string>
+    <string name="app_name">Foodplan Lüneburg</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Foodplan Lüneburg</string>
@@ -7,13 +7,14 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <!--Navbar-->
     <string name="menu_foodplan">Foodplan</string>
     <string name="menu_fooddetail">Fooddetail</string>
     <string name="menu_foods">Foods</string>
-
     <string name="menu_login">Login</string>
     <string name="menu_settings">Settings</string>
 
+    <!--Login-->
     <string name="login_name">Name</string>
     <string name="login_password">Password</string>
     <string name="login_successfull">Successfull</string>
@@ -21,17 +22,8 @@
     <string name="login_unsuccessfull">Unsuccessfull</string>
     <string name="logout">Logout</string>
 
-    <string name="endtext">This app is part of a Project. Made by Henrik, Max and Jonas.</string>
-    <string name="settings_selectlanguage">Select a language:</string>
-    <string-array name="language">
-        <item>English</item>
-        <item>Deutsch</item>
-    </string-array>
-
-
-    <!--Fragment slideshow/Foods-->
+    <!--Fragment Foods-->
     <string name="button_add">ADD</string>
-
     <string name="editText_nameOfFood">name of Food</string>
 
     <!--Fragment foodDetail-->
@@ -43,12 +35,15 @@
 
     <string name="button_save">Save</string>
     <string name="button_delete">Delete</string>
+    <string name="button_deletefromfoodplan">Delete from Foodplan</string>
     <string name="button_back">Back</string>
+
+    <string name="button_backtofoodplan">Back to Foodplan</string>
+
     <string name="button_delete_foodplan">Delete from foodplan</string>
     <string name="button_back_foodplan">Back to foodplan</string>
-    <string name="button_addToFoodplan">ADD TO FOODPLAN</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_home">Home</string>
+    <string name="button_addToFoodplan">Add to Foodplan</string>
+    <string name="addedToFoodplan">Added to Foodplan</string>
 
     <!--Activity Main/FoodList-->
     <string name="txt_monday">MON</string>
@@ -56,5 +51,6 @@
     <string name="txt_wednesday">WED</string>
     <string name="txt_thursday">THU</string>
     <string name="txt_friday">FRI</string>
+    <string name="txt_week">Week:</string>
 
 </resources>

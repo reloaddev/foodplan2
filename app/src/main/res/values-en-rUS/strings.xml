@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">foodplan</string>
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
+    <string name="app_name">Foodplan Lüneburg</string>
     <string name="button_back">Back</string>
     <string name="button_delete">Delete</string>
     <string name="button_save">Save</string>
@@ -12,8 +10,6 @@
     <string name="txt_food_id">FOODID</string>
     <string name="editText_nameOfFood">name of Food</string>
     <string name="button_add">ADD</string>
-    <string name="settings_selectlanguage">Select a language:</string>
-    <string name="endtext">This app is part of a Project. Made by Henrik, Max and Jonas.</string>
     <string name="login_unsuccessfull">Unsuccessfull</string>
     <string name="login_successfull">Successfull</string>
     <string name="login_password">Password</string>
@@ -30,16 +26,21 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
 
-    <string name="txt_monday">MON</string>
-    <string name="txt_tuesday">TUE</string>
-    <string name="txt_wednesday">WED</string>
-    <string name="txt_thursday">THU</string>
-    <string name="txt_friday">FRI</string>
+    <string name="txt_monday">Monday</string>
+    <string name="txt_tuesday">Tuesday</string>
+    <string name="txt_wednesday">Wednesday</string>
+    <string name="txt_thursday">Thursday</string>
+    <string name="txt_friday">Friday</string>
+
+    <string name="button_backtofoodplan">Back to Foodplan</string>
+    <string name="button_deletefromfoodplan">Delete form Foodplan</string>
 
     <string name="logout">Logout</string>
     <string name="logout_successfull">Logout Successfull</string>
-    <string name="button_addToFoodplan">Add to foodplan</string>
+    <string name="button_addToFoodplan">Add to Foodplan</string>
     <string name="button_delete_foodplan">Delete from foodplan</string>
     <string name="button_back_foodplan">Back to foodplan</string>
+    <string name="addedToFoodplan">Added to Foodplan</string>
+    <string name="txt_week">Week:</string>
 
 </resources>

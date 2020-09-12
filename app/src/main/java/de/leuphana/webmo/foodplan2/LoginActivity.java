@@ -48,7 +48,6 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
     }
 
     private void validate (String userName, String userPassword){
