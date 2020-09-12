@@ -136,9 +136,12 @@ public class FoodDetailActivity extends AppCompatActivity {
                 String type = foodTypeView.getText().toString();
                 Food updatedFood = new Food(id, name, price, Type.valueOf(type));
 
-                ArrayList<Food> foodArrayList = FoodList.getFoodList().getFoodArrayList();
-                foodArrayList.add(updatedFood);
-                FoodList.getFoodList().setFoodArrayList(foodArrayList);
+                foodList.add(updatedFood);
+                try {
+                    InternalStorage.writeObject(getApplicationContext(),"foodList", foodList);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
