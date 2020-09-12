@@ -44,8 +44,6 @@ public class FoodListActivity extends AppCompatActivity {
                 i.printStackTrace();
             }
         }
-
-
         createNavigation();
 
         try {
@@ -60,12 +58,17 @@ public class FoodListActivity extends AppCompatActivity {
     private void createNavigation() {
         Button navButtonplanfoods =  findViewById(R.id.nav_foodplanButton);
         Button navButtonlogin =  findViewById(R.id.nav_loginButton);
+        final Button addButton = findViewById(R.id.addButton);
+        final EditText inputFoodname = findViewById(R.id.inputFoodname);
 
-        //TODO Hide ADD und Test
         SharedPreferences sp = getSharedPreferences("login",MODE_PRIVATE);
         if ( sp.getBoolean("logged",false)){
+            addButton.setVisibility(View.VISIBLE);
+            inputFoodname.setVisibility(View.VISIBLE);
             navButtonlogin.setText(R.string.logout);
         }else{
+            addButton.setVisibility(View.INVISIBLE);
+            inputFoodname.setVisibility(View.INVISIBLE);
             navButtonlogin.setText(R.string.menu_login);
         }
 
@@ -155,7 +158,7 @@ public class FoodListActivity extends AppCompatActivity {
 
     private void configureSearchBar()throws IOException, ClassNotFoundException {
       ListView listView = (ListView) findViewById(R.id.foodList);
-      SearchView  editsearch = (SearchView) findViewById(R.id.searchView);
+      //SearchView  editsearch = (SearchView) findViewById(R.id.searchView);
 
         final List<Food> foodList = (List<Food>) InternalStorage.readObject(this, "foodList");
         List<String> foodNameList = new ArrayList<String>();
@@ -168,7 +171,7 @@ public class FoodListActivity extends AppCompatActivity {
 
         listView.setAdapter(adapter);
 
-        editsearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        /*editsearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
                 return false;
@@ -182,7 +185,7 @@ public class FoodListActivity extends AppCompatActivity {
 
                 return false;
             }
-        });
+        });*/
     }
 
 

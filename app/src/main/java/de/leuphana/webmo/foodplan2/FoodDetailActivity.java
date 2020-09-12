@@ -34,7 +34,11 @@ public class FoodDetailActivity extends AppCompatActivity {
         }
 
         createNavigation();
-        createFoodDetailView(foodId);
+        try {
+            createFoodDetailView(foodId);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     public void createNavigation() {
@@ -68,8 +72,8 @@ public class FoodDetailActivity extends AppCompatActivity {
         });
     }
 
-    public void createFoodDetailView(int foodId) {
-        List<Food> foodList = FoodList.getFoodList().getFoodArrayList();
+    public void createFoodDetailView(int foodId) throws IOException, ClassNotFoundException {
+        final List<Food> foodList = (List<Food>) InternalStorage.readObject(getApplicationContext(), "foodList");
         Food food = new Food(-1, "Undefined", 0.00f, Type.NOTASSIGNED);
         for (Food foodIterator : foodList) {
             if (foodIterator.getId() == foodId) {
@@ -99,11 +103,13 @@ public class FoodDetailActivity extends AppCompatActivity {
         if (sp.getBoolean("logged", false)) {
             saveButton.setVisibility(View.VISIBLE);
             deleteButton.setVisibility(View.VISIBLE);
+            addToFoodplanButton.setVisibility(View.VISIBLE);
             navButtonLogin.setText(R.string.logout);
 
         } else {
             saveButton.setVisibility(View.INVISIBLE);
             deleteButton.setVisibility(View.INVISIBLE);
+            addToFoodplanButton.setVisibility(View.INVISIBLE);
             navButtonLogin.setText(R.string.menu_login);
         }
 
@@ -140,21 +146,17 @@ public class FoodDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 int deleteId = Integer.parseInt(foodIdView.getText().toString());
-                List<Food> foodList = FoodList.getFoodList().getFoodArrayList();
                 ListIterator<Food> iterator = foodList.listIterator();
-
                 while (iterator.hasNext()) {
                     if (iterator.next().getId() == deleteId) {
                         iterator.remove();
                     }
                 }
-
                 try {
                     InternalStorage.writeObject(getApplicationContext(), "foodList", foodList);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
                 try {
                     Intent k = new Intent(getApplicationContext(), FoodListActivity.class);
                     startActivity(k);

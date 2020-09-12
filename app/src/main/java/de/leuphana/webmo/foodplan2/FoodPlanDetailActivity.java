@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
@@ -20,6 +22,8 @@ import de.leuphana.webmo.foodplan2.structure.FoodList;
 import de.leuphana.webmo.foodplan2.structure.Type;
 
 public class FoodPlanDetailActivity extends AppCompatActivity {
+
+    private static final String TAG = "TAG";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +41,13 @@ public class FoodPlanDetailActivity extends AppCompatActivity {
         }
 
         createNavigation();
-        createFoodDetailView(foodId, deleteDay, deletePosition);
+        try {
+            createFoodDetailView(foodId, deleteDay, deletePosition);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
 
     }
 
@@ -86,8 +96,8 @@ public class FoodPlanDetailActivity extends AppCompatActivity {
         });
     }
 
-    private void createFoodDetailView(int foodId, final String deleteDay, final int deletePosition) {
-        List<Food> foodList = FoodList.getFoodList().getFoodArrayList();
+    private void createFoodDetailView(int foodId, final String deleteDay, final int deletePosition) throws IOException, ClassNotFoundException {
+        final List<Food> foodList = (List<Food>) InternalStorage.readObject(getApplicationContext(), "foodList");
         Food food = new Food(-1, "Undefined", 0.00f, Type.NOTASSIGNED);
         for (Food foodIterator : foodList) {
             if (foodIterator.getId() == foodId) {

@@ -55,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+
+
     }
 
     private void deleteFoodPlanFood() throws IOException, ClassNotFoundException {
@@ -62,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
         Bundle deleteFoodBundle = getIntent().getExtras();
         String deleteDay = deleteFoodBundle.getString("deleteDay");
         int deletePosition = deleteFoodBundle.getInt("deletePosition");
-        final GridView gridMondayFoods = findViewById(R.id.gridMonday);
         switch (deleteDay) {
             case "MON":
                 // TODO i * 15 für weitere Wochen
@@ -202,6 +203,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 int itemPosition = position;
                 String foodName = (String) gridMondayFoods.getItemAtPosition(position);
+                Boolean found = false;
                 for (Food food : foodList) {
                     if (food.getName().equals(foodName)) {
                         Intent i = new Intent(getApplicationContext(), FoodPlanDetailActivity.class);
@@ -212,18 +214,19 @@ public class MainActivity extends AppCompatActivity {
                         i.putExtras(positionBundle);
                         startActivity(i);
                         finish();
-                    } else {
-                        Intent i = new Intent(getApplicationContext(), FoodPlanDetailActivity.class);
-                        Bundle positionBundle = new Bundle();
-                        positionBundle.putInt("foodId", -1);
-                        positionBundle.putString("day", "MON");
-                        positionBundle.putInt("position", position);
-                        i.putExtras(positionBundle);
-                        startActivity(i);
-                        finish();
+                        found = true;
                     }
                 }
-
+                if(found == false) {
+                    Intent i = new Intent(getApplicationContext(), FoodPlanDetailActivity.class);
+                    Bundle positionBundle = new Bundle();
+                    positionBundle.putInt("foodId", -1);
+                    positionBundle.putString("day", "MON");
+                    positionBundle.putInt("position", position);
+                    i.putExtras(positionBundle);
+                    startActivity(i);
+                    finish();
+                }
             }
         });
 
@@ -250,6 +253,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 int itemPosition = position;
+                Boolean found = false;
                 String foodName = (String) gridTuesdayFoods.getItemAtPosition(position);
                 for (Food food : foodList) {
                     if (food.getName().equals(foodName)) {
@@ -261,16 +265,18 @@ public class MainActivity extends AppCompatActivity {
                         i.putExtras(positionBundle);
                         startActivity(i);
                         finish();
-                    } else {
-                        Intent i = new Intent(getApplicationContext(), FoodPlanDetailActivity.class);
-                        Bundle positionBundle = new Bundle();
-                        positionBundle.putInt("foodId", -1);
-                        positionBundle.putString("day", "TUE");
-                        positionBundle.putInt("position", position);
-                        i.putExtras(positionBundle);
-                        startActivity(i);
-                        finish();
+                        found = true;
                     }
+                }
+                if(found == false) {
+                    Intent i = new Intent(getApplicationContext(), FoodPlanDetailActivity.class);
+                    Bundle positionBundle = new Bundle();
+                    positionBundle.putInt("foodId", -1);
+                    positionBundle.putString("day", "TUE");
+                    positionBundle.putInt("position", position);
+                    i.putExtras(positionBundle);
+                    startActivity(i);
+                    finish();
                 }
 
             }
@@ -299,6 +305,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 int itemPosition = position;
+                Boolean found = false;
                 String foodName = (String) gridWednesdayFoods.getItemAtPosition(position);
                 for (Food food : foodList) {
                     if (food.getName().equals(foodName)) {
@@ -310,7 +317,9 @@ public class MainActivity extends AppCompatActivity {
                         i.putExtras(positionBundle);
                         startActivity(i);
                         finish();
-                    } else {
+                        found = true;
+                    }
+                    if(found == false) {
                         Intent i = new Intent(getApplicationContext(), FoodPlanDetailActivity.class);
                         Bundle positionBundle = new Bundle();
                         positionBundle.putInt("foodId", -1);
@@ -347,6 +356,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 int itemPosition = position;
+                Boolean found = false;
                 String foodName = (String) gridThursdayFoods.getItemAtPosition(position);
                 for (Food food : foodList) {
                     if (food.getName().equals(foodName)) {
@@ -358,16 +368,18 @@ public class MainActivity extends AppCompatActivity {
                         i.putExtras(positionBundle);
                         startActivity(i);
                         finish();
-                    } else {
-                        Intent i = new Intent(getApplicationContext(), FoodPlanDetailActivity.class);
-                        Bundle positionBundle = new Bundle();
-                        positionBundle.putInt("foodId", -1);
-                        positionBundle.putString("day", "THU");
-                        positionBundle.putInt("position", position);
-                        i.putExtras(positionBundle);
-                        startActivity(i);
-                        finish();
+                        found = true;
                     }
+                }
+                if(found == false) {
+                    Intent i = new Intent(getApplicationContext(), FoodPlanDetailActivity.class);
+                    Bundle positionBundle = new Bundle();
+                    positionBundle.putInt("foodId", -1);
+                    positionBundle.putString("day", "THU");
+                    positionBundle.putInt("position", position);
+                    i.putExtras(positionBundle);
+                    startActivity(i);
+                    finish();
                 }
             }
         });
@@ -396,6 +408,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 int itemPosition = position;
+                Boolean found = false;
                 String foodName = (String) gridFridayFoods.getItemAtPosition(position);
                 for (Food food : foodList) {
                     if (food.getName().equals(foodName)) {
@@ -407,7 +420,9 @@ public class MainActivity extends AppCompatActivity {
                         i.putExtras(positionBundle);
                         startActivity(i);
                         finish();
-                    } else {
+                        found = true;
+                    }
+                    if(found == false) {
                         Intent i = new Intent(getApplicationContext(), FoodPlanDetailActivity.class);
                         Bundle positionBundle = new Bundle();
                         positionBundle.putInt("foodId", -1);
