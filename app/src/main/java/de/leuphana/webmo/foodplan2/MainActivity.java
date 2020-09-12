@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
 
         Button navButtonfoods =  findViewById(R.id.nav_foodsButton);
         Button navButtonlogin =  findViewById(R.id.nav_loginButton);
-        Button navButtonsettings =  findViewById(R.id.nav_settingsButton);
 
         SharedPreferences sp = getSharedPreferences("login",MODE_PRIVATE);
 
@@ -76,13 +75,6 @@ public class MainActivity extends AppCompatActivity {
                     Intent k = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(k);
                 }
-            }
-        });
-        navButtonsettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), SettingsActivity.class);
-                startActivity(i);
             }
         });
     }

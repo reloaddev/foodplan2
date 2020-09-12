@@ -32,7 +32,6 @@ public class LoginActivity extends AppCompatActivity {
 
         Button navButtonplanfoods =  findViewById(R.id.nav_foodplanButton);
         Button navButtonfoods =  findViewById(R.id.nav_foodsButton);
-        Button navButtonsettings =  findViewById(R.id.nav_settingsButton);
 
         //Navbar
         navButtonplanfoods.setOnClickListener(new View.OnClickListener() {
@@ -46,13 +45,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), FoodListActivity.class);
-                startActivity(i);
-            }
-        });
-        navButtonsettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), SettingsActivity.class);
                 startActivity(i);
             }
         });
