@@ -44,7 +44,6 @@ public class FoodListActivity extends AppCompatActivity {
                 i.printStackTrace();
             }
         }
-
         createNavigation();
 
         try {
@@ -57,12 +56,10 @@ public class FoodListActivity extends AppCompatActivity {
     }
 
     private void createNavigation() {
-
         Button navButtonplanfoods =  findViewById(R.id.nav_foodplanButton);
         Button navButtonlogin =  findViewById(R.id.nav_loginButton);
         final Button addButton = findViewById(R.id.addButton);
         final EditText inputFoodname = findViewById(R.id.inputFoodname);
-
 
         SharedPreferences sp = getSharedPreferences("login",MODE_PRIVATE);
         if ( sp.getBoolean("logged",false)){

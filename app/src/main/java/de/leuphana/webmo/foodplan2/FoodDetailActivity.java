@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -34,11 +33,6 @@ public class FoodDetailActivity extends AppCompatActivity {
             foodId = bundle.getInt("foodId");
         }
 
-        List<Food> foodList = FoodList.getFoodList().getFoodArrayList();
-        Food food = new Food(-1, "Undefined", 0.00f,Type.NOTASSIGNED);
-        for(Food foodIterator: foodList) {
-            if(foodIterator.getId()==foodId){
-
         createNavigation();
         try {
             createFoodDetailView(foodId);
@@ -48,9 +42,11 @@ public class FoodDetailActivity extends AppCompatActivity {
     }
 
     public void createNavigation() {
+
         //NavButtons
         final Button navButtonPlanFoods = findViewById(R.id.nav_foodplanButton);
         final Button navButtonFoods = findViewById(R.id.nav_foodsButton);
+
 
         navButtonPlanFoods.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,16 +99,8 @@ public class FoodDetailActivity extends AppCompatActivity {
         final Button addToFoodplanButton = findViewById(R.id.addToFoodplanButton);
         final Button navButtonLogin = findViewById(R.id.nav_loginButton);
 
-
-        final TextView result = findViewById((R.id.tvResult));
-        //NavButtons
-        final Button navButtonplanfoods =  findViewById(R.id.foodplanButton);
-        final Button navButtonfoods =  findViewById(R.id.foodsButton);
-        final Button navButtonlogin =  findViewById(R.id.loginButton);
-
-        SharedPreferences sp = getSharedPreferences("login",MODE_PRIVATE);
-        if ( sp.getBoolean("logged",false)){
-
+        SharedPreferences sp = getSharedPreferences("login", MODE_PRIVATE);
+        if (sp.getBoolean("logged", false)) {
             saveButton.setVisibility(View.VISIBLE);
             deleteButton.setVisibility(View.VISIBLE);
             addToFoodplanButton.setVisibility(View.VISIBLE);
@@ -187,26 +175,11 @@ public class FoodDetailActivity extends AppCompatActivity {
                 try {
                     Intent k = new Intent(getApplicationContext(), FoodListActivity.class);
                     startActivity(k);
-                } catch(Exception e) {
-                    ArrayList<Food> foodPlanList = (ArrayList<Food>) InternalStorage.readObject(getApplicationContext(), "foodPlanList");
-                    foodPlanList.add(finalFood);
-                    InternalStorage.writeObject(getApplicationContext(), "foodPlanList", foodPlanList);
-                    Toast.makeText(getApplicationContext(), R.string.addedToFoodplan, Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
         });
-
-        navButtonlogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SharedPreferences sp = getSharedPreferences("login",MODE_PRIVATE);
-                if ( sp.getBoolean("logged",false)){
-                    sp.edit().putBoolean("logged",false).apply();
-                    Toast.makeText(getApplicationContext(), R.string.logout_successfull ,Toast.LENGTH_LONG).show();
-                }else{
-                    Intent k = new Intent(getApplicationContext(), LoginActivity.class);
-                    startActivity(k);
-
 
         final Food finalFood = food;
         addToFoodplanButton.setOnClickListener(new View.OnClickListener() {
@@ -218,7 +191,6 @@ public class FoodDetailActivity extends AppCompatActivity {
                     InternalStorage.writeObject(getApplicationContext(), "foodPlanList", foodPlanList);
                 } catch (Exception e) {
                     e.printStackTrace();
-
                 }
             }
         });
