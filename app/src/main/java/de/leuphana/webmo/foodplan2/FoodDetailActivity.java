@@ -63,7 +63,6 @@ public class FoodDetailActivity extends AppCompatActivity {
         final Button navButtonplanfoods =  findViewById(R.id.nav_foodplanButton);
         final Button navButtonfoods =  findViewById(R.id.nav_foodsButton);
         final Button navButtonlogin =  findViewById(R.id.nav_loginButton);
-        final Button navButtonsettings =  findViewById(R.id.nav_settingsButton);
 
         SharedPreferences sp = getSharedPreferences("login",MODE_PRIVATE);
         if ( sp.getBoolean("logged",false)){
@@ -179,17 +178,7 @@ public class FoodDetailActivity extends AppCompatActivity {
                 }
             }
         });
-        navButtonsettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try {
-                    Intent k = new Intent(getApplicationContext(), SettingsActivity.class);
-                    startActivity(k);
-                } catch(Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+
 
 
     }

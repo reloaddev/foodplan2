@@ -60,7 +60,6 @@ public class FoodListActivity extends AppCompatActivity {
     private void createNavigation() {
         Button navButtonplanfoods =  findViewById(R.id.nav_foodplanButton);
         Button navButtonlogin =  findViewById(R.id.nav_loginButton);
-        Button navButtonsettings =  findViewById(R.id.nav_settingsButton);
 
         //TODO Hide ADD und Test
         SharedPreferences sp = getSharedPreferences("login",MODE_PRIVATE);
@@ -90,13 +89,7 @@ public class FoodListActivity extends AppCompatActivity {
                 }
             }
         });
-        navButtonsettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), SettingsActivity.class);
-                startActivity(i);
-            }
-        });
+
     }
 
     private void fillFoodList() throws IOException, ClassNotFoundException {
@@ -144,6 +137,11 @@ public class FoodListActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String name = inputFoodname.getText().toString();
                 if(!name.equals("name of Food") && !name.isEmpty()) {
+                    for(Food food: foodList) {
+                        if(food.getName().equals(inputFoodname)) {
+                            Toast.makeText(getApplicationContext(), "Foodname already taken.", Toast.LENGTH_SHORT);
+                        }
+                    }
                     Food newFood = new Food(Food.genId(), name, 0, Type.NOTASSIGNED);
                     foodList.add(newFood);
                     try {
