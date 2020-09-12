@@ -3,6 +3,8 @@ package de.leuphana.webmo.foodplan2.structure;
 import java.io.Serializable;
 import java.util.List;
 
+import de.leuphana.webmo.foodplan2.InternalStorage;
+
 public class Food implements Serializable {
     private int id;
     private String name;
@@ -25,10 +27,9 @@ public class Food implements Serializable {
 
     //With this Method we will never get Id´s lower than the maxId
     //But it´s enough for our context
-    public static int genId() {
-        List<Food> foodArrayList = FoodList.getFoodList().getFoodArrayList();
+    public static int genId(List<Food> foodList) {
         int maxId = 0;
-        for (Food food: foodArrayList) {
+        for (Food food: foodList) {
             if (food.id > maxId) {
                 maxId = food.id;
             }

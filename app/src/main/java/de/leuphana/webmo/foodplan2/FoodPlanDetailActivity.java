@@ -40,27 +40,27 @@ public class FoodPlanDetailActivity extends AppCompatActivity {
             deletePosition = bundle.getInt("position");
         }
 
-        createNavigation();
+        createNavigation(foodId);
         try {
             createFoodDetailView(foodId, deleteDay, deletePosition);
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-
-
-
     }
 
-    private void createNavigation() {
+    private void createNavigation(final int foodId) {
         Button navButtonplanFoods = findViewById(R.id.nav_foodplanButton);
         Button navButtonLogin = findViewById(R.id.nav_loginButton);
         Button navButtonFoods = findViewById(R.id.nav_foodsButton);
+        Button deleteButton = findViewById(R.id.deleteButton);
 
         SharedPreferences sp = getSharedPreferences("login", MODE_PRIVATE);
         if (sp.getBoolean("logged", false)) {
             navButtonLogin.setText(R.string.logout);
+            deleteButton.setVisibility(View.INVISIBLE);
         } else {
             navButtonLogin.setText(R.string.menu_login);
+            deleteButton.setVisibility(View.VISIBLE);
         }
 
         navButtonplanFoods.setOnClickListener(new View.OnClickListener() {
@@ -107,13 +107,13 @@ public class FoodPlanDetailActivity extends AppCompatActivity {
         final TextView foodIdView = findViewById(R.id.foodIdVal);
         foodIdView.setText((String.valueOf(food.getId())));
 
-        final EditText foodNameView = findViewById(R.id.foodNameVal);
+        final TextView foodNameView = findViewById(R.id.foodNameVal);
         foodNameView.setText(food.getName());
 
-        final EditText foodPriceView = findViewById(R.id.foodPriceVal);
+        final TextView foodPriceView = findViewById(R.id.foodPriceVal);
         foodPriceView.setText(String.valueOf(food.getPrice()));
 
-        final EditText foodTypeView = findViewById(R.id.foodTypeVal);
+        final TextView foodTypeView = findViewById(R.id.foodTypeVal);
         foodTypeView.setText(food.getType().toString());
 
         //DetailButtons

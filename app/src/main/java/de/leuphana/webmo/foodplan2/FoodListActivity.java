@@ -140,7 +140,7 @@ public class FoodListActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String name = inputFoodname.getText().toString();
                 if(!name.equals("name of Food") && !name.isEmpty()) {
-                    Food newFood = new Food(Food.genId(), name, 0, Type.NOTASSIGNED);
+                    Food newFood = new Food(Food.genId(foodList), name, 0, Type.NOTASSIGNED);
                     foodList.add(newFood);
                     try {
                         InternalStorage.writeObject(getApplicationContext(), "foodList", foodList);
