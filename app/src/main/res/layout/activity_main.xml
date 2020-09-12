@@ -1,50 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ffffff"
-    android:orientation="vertical"
-    android:gravity="bottom">
+    android:orientation="vertical">
 
-
-    <Button
-        android:id="@+id/foodplanButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
-        android:layout_toStartOf="@+id/foodsButton"
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
         android:background="@color/colorPrimary"
-<<<<<<< Updated upstream
-        android:text="@string/menu_foodplan"
-        android:textColor="@android:color/white"></Button>
+        android:text="@string/txt_monday"
+        android:textSize="20dp"
+        android:textColor="#ffffff"
+        android:textAlignment="center"/>
 
-    <Button
-        android:id="@+id/foodsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="14dp"
-        android:layout_toStartOf="@+id/loginButton"
-        android:text="@string/menu_foods"></Button>
+    <GridView
+        android:id="@+id/gridMonday"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:numColumns="3" />
 
-    <Button
-        android:id="@+id/loginButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="17dp"
-        android:layout_toStartOf="@+id/settingsButton"
-        android:text="@string/menu_login"></Button>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/txt_tuesday"
+        android:textSize="20dp"
+        android:textColor="#ffffff"
+        android:textAlignment="center"/>
 
-    <Button
-        android:id="@+id/settingsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="11dp"
-        android:text="@string/menu_settings"></Button>
+    <GridView
+        android:id="@+id/gridTuesday"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:numColumns="3" />
 
-</RelativeLayout>
-=======
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/txt_wednesday"
+        android:textSize="20dp"
+        android:textColor="#ffffff"
+        android:textAlignment="center"/>
+
+    <GridView
+        android:id="@+id/gridWednesday"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:numColumns="3" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/txt_thursday"
+        android:textSize="20dp"
+        android:textColor="#ffffff"
+        android:textAlignment="center"/>
+
+    <GridView
+        android:id="@+id/gridThursday"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:numColumns="3" />
+
+    <TextView       
         android:text="@string/txt_friday"
         android:textSize="20dp"
         android:textColor="#ffffff"
@@ -55,14 +77,8 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:numColumns="3">
-
     </GridView>
 
-    <SearchView
-        android:id="@+id/searchView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:iconifiedByDefault="false" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -99,7 +115,6 @@
             android:text="next Week"
             android:textColor="@android:color/white"/>
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -135,13 +150,6 @@
             android:text="@string/menu_login"
             android:textColor="@android:color/white"
             android:textStyle="bold" />
-
-
     </LinearLayout>
-
-
 </LinearLayout>
 
-
-
->>>>>>> Stashed changes

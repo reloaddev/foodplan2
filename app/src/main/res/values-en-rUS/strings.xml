@@ -26,26 +26,14 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
 
-<<<<<<< Updated upstream
-    <string name="logout">Logout</string>
-    <string name="logout_successfull">Logout Successfull</string>
-
-
     <string name="txt_monday">Monday</string>
     <string name="txt_tuesday">Tuesday</string>
     <string name="txt_wednesday">Wednesday</string>
     <string name="txt_thursday">Thursday</string>
     <string name="txt_friday">Friday</string>
 
-    <string name="button_addToFoodplan">Add to foodplan</string>
     <string name="button_backtofoodplan">Back to Foodplan</string>
     <string name="button_deletefromfoodplan">Delete form Foodplan</string>
-=======
-    <string name="txt_monday">Monday</string>
-    <string name="txt_tuesday">Tuesday</string>
-    <string name="txt_wednesday">Wednesday</string>
-    <string name="txt_thursday">Thuesday</string>
-    <string name="txt_friday">Friday</string>
 
     <string name="logout">Logout</string>
     <string name="logout_successfull">Logout Successfull</string>
@@ -54,6 +42,5 @@
     <string name="button_back_foodplan">Back to foodplan</string>
     <string name="addedToFoodplan">Added to Foodplan</string>
     <string name="txt_week">Week:</string>
->>>>>>> Stashed changes
 
 </resources>

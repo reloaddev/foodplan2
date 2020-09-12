@@ -2,7 +2,6 @@ package de.leuphana.webmo.foodplan2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
@@ -30,16 +30,15 @@ public class FoodDetailActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         int foodId = -1;
-        if(bundle != null) {
+        if (bundle != null) {
             foodId = bundle.getInt("foodId");
         }
 
-<<<<<<< Updated upstream
         List<Food> foodList = FoodList.getFoodList().getFoodArrayList();
         Food food = new Food(-1, "Undefined", 0.00f,Type.NOTASSIGNED);
         for(Food foodIterator: foodList) {
             if(foodIterator.getId()==foodId){
-=======
+
         createNavigation();
         try {
             createFoodDetailView(foodId);
@@ -52,6 +51,7 @@ public class FoodDetailActivity extends AppCompatActivity {
         //NavButtons
         final Button navButtonPlanFoods = findViewById(R.id.nav_foodplanButton);
         final Button navButtonFoods = findViewById(R.id.nav_foodsButton);
+
         navButtonPlanFoods.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,11 +81,9 @@ public class FoodDetailActivity extends AppCompatActivity {
         Food food = new Food(-1, "Undefined", 0.00f, Type.NOTASSIGNED);
         for (Food foodIterator : foodList) {
             if (foodIterator.getId() == foodId) {
->>>>>>> Stashed changes
                 food = foodIterator;
             }
         }
-
         final TextView foodIdView = findViewById(R.id.foodIdVal);
         foodIdView.setText((String.valueOf(food.getId())));
 
@@ -98,9 +96,13 @@ public class FoodDetailActivity extends AppCompatActivity {
         final EditText foodTypeView = findViewById(R.id.foodTypeVal);
         foodTypeView.setText(food.getType().toString());
 
+        //DetailButtons
         final Button saveButton = findViewById(R.id.saveButton);
         final Button deleteButton = findViewById(R.id.deleteButton);
         final Button backButton = findViewById(R.id.backButton);
+        final Button addToFoodplanButton = findViewById(R.id.addToFoodplanButton);
+        final Button navButtonLogin = findViewById(R.id.nav_loginButton);
+
 
         final TextView result = findViewById((R.id.tvResult));
         //NavButtons
@@ -108,18 +110,34 @@ public class FoodDetailActivity extends AppCompatActivity {
         final Button navButtonfoods =  findViewById(R.id.foodsButton);
         final Button navButtonlogin =  findViewById(R.id.loginButton);
 
-
         SharedPreferences sp = getSharedPreferences("login",MODE_PRIVATE);
         if ( sp.getBoolean("logged",false)){
+
             saveButton.setVisibility(View.VISIBLE);
             deleteButton.setVisibility(View.VISIBLE);
-            navButtonlogin.setText(R.string.logout);
+            addToFoodplanButton.setVisibility(View.VISIBLE);
+            navButtonLogin.setText(R.string.logout);
 
-        }else{
+        } else {
             saveButton.setVisibility(View.INVISIBLE);
             deleteButton.setVisibility(View.INVISIBLE);
-            navButtonlogin.setText(R.string.menu_login);
+            addToFoodplanButton.setVisibility(View.INVISIBLE);
+            navButtonLogin.setText(R.string.menu_login);
         }
+
+        navButtonLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences sp = getSharedPreferences("login", MODE_PRIVATE);
+                if (sp.getBoolean("logged", false)) {
+                    sp.edit().putBoolean("logged", false).apply();
+                    Toast.makeText(getApplicationContext(), R.string.logout_successfull, Toast.LENGTH_LONG).show();
+                } else {
+                    Intent k = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(k);
+                }
+            }
+        });
 
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,12 +146,14 @@ public class FoodDetailActivity extends AppCompatActivity {
                 String name = foodNameView.getText().toString();
                 float price = Float.parseFloat(foodPriceView.getText().toString());
                 String type = foodTypeView.getText().toString();
-                result.setText("ID: " + id + " | NAME: " + name + " | PRICE: " + price + " | " + type);
                 Food updatedFood = new Food(id, name, price, Type.valueOf(type));
 
-                ArrayList<Food> foodArrayList = FoodList.getFoodList().getFoodArrayList();
-                foodArrayList.add(updatedFood);
-                FoodList.getFoodList().setFoodArrayList(foodArrayList);
+                foodList.add(updatedFood);
+                try {
+                    InternalStorage.writeObject(getApplicationContext(),"foodList", foodList);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -141,21 +161,21 @@ public class FoodDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 int deleteId = Integer.parseInt(foodIdView.getText().toString());
-                ArrayList<Food> foodArrayList = FoodList.getFoodList().getFoodArrayList();
-                ListIterator<Food> iterator = foodArrayList.listIterator();
-
-                while(iterator.hasNext()) {
+                ListIterator<Food> iterator = foodList.listIterator();
+                while (iterator.hasNext()) {
                     if (iterator.next().getId() == deleteId) {
                         iterator.remove();
                     }
                 }
-
-                FoodList.getFoodList().setFoodArrayList(foodArrayList);
-
+                try {
+                    InternalStorage.writeObject(getApplicationContext(), "foodList", foodList);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 try {
                     Intent k = new Intent(getApplicationContext(), FoodListActivity.class);
                     startActivity(k);
-                } catch(Exception e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -168,43 +188,14 @@ public class FoodDetailActivity extends AppCompatActivity {
                     Intent k = new Intent(getApplicationContext(), FoodListActivity.class);
                     startActivity(k);
                 } catch(Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-
-
-        navButtonplanfoods.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try {
-                    Intent k = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(k);
-                } catch(Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        navButtonfoods.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try {
-<<<<<<< Updated upstream
-                    Intent k = new Intent(getApplicationContext(), FoodListActivity.class);
-                    startActivity(k);
-                } catch(Exception e) {
-=======
                     ArrayList<Food> foodPlanList = (ArrayList<Food>) InternalStorage.readObject(getApplicationContext(), "foodPlanList");
                     foodPlanList.add(finalFood);
                     InternalStorage.writeObject(getApplicationContext(), "foodPlanList", foodPlanList);
                     Toast.makeText(getApplicationContext(), R.string.addedToFoodplan, Toast.LENGTH_SHORT).show();
-                } catch (Exception e) {
->>>>>>> Stashed changes
-                    e.printStackTrace();
                 }
             }
         });
+
         navButtonlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -215,6 +206,19 @@ public class FoodDetailActivity extends AppCompatActivity {
                 }else{
                     Intent k = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(k);
+
+
+        final Food finalFood = food;
+        addToFoodplanButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    ArrayList<Food> foodPlanList = (ArrayList<Food>) InternalStorage.readObject(getApplicationContext(), "foodPlanList");
+                    foodPlanList.add(finalFood);
+                    InternalStorage.writeObject(getApplicationContext(), "foodPlanList", foodPlanList);
+                } catch (Exception e) {
+                    e.printStackTrace();
+
                 }
             }
         });
