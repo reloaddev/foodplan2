@@ -28,12 +28,16 @@ public class FoodPlanDetailActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         int foodId = -1;
+        int deletePosition = -1;
+        String deleteDay = "undefined";
         if(bundle != null) {
             foodId = bundle.getInt("foodId");
+            deleteDay = bundle.getString("day");
+            deletePosition = bundle.getInt("position");
         }
 
         createNavigation();
-        createFoodDetailView(foodId);
+        createFoodDetailView(foodId, deleteDay, deletePosition);
 
     }
 
@@ -82,7 +86,7 @@ public class FoodPlanDetailActivity extends AppCompatActivity {
         });
     }
 
-    private void createFoodDetailView(int foodId) {
+    private void createFoodDetailView(int foodId, final String deleteDay, final int deletePosition) {
         List<Food> foodList = FoodList.getFoodList().getFoodArrayList();
         Food food = new Food(-1, "Undefined", 0.00f, Type.NOTASSIGNED);
         for (Food foodIterator : foodList) {
@@ -134,21 +138,13 @@ public class FoodPlanDetailActivity extends AppCompatActivity {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int deleteId = Integer.parseInt(foodIdView.getText().toString());
-                ArrayList<Food> foodArrayList = FoodList.getFoodList().getFoodArrayList();
-                ListIterator<Food> iterator = foodArrayList.listIterator();
-
-                while (iterator.hasNext()) {
-                    if (iterator.next().getId() == deleteId) {
-                        iterator.remove();
-                    }
-                }
-
-                FoodList.getFoodList().setFoodArrayList(foodArrayList);
-
                 try {
-                    Intent k = new Intent(getApplicationContext(), FoodListActivity.class);
-                    startActivity(k);
+                    Intent deleteFoodIntent = new Intent(getApplicationContext(), MainActivity.class);
+                    Bundle deleteFoodBundle = new Bundle();
+                    deleteFoodBundle.putString("deleteDay", deleteDay);
+                    deleteFoodBundle.putInt("deletePosition", deletePosition);
+                    deleteFoodIntent.putExtras(deleteFoodBundle);
+                    startActivity(deleteFoodIntent);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

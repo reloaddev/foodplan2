@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
@@ -139,8 +140,8 @@ public class FoodDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 int deleteId = Integer.parseInt(foodIdView.getText().toString());
-                ArrayList<Food> foodArrayList = FoodList.getFoodList().getFoodArrayList();
-                ListIterator<Food> iterator = foodArrayList.listIterator();
+                List<Food> foodList = FoodList.getFoodList().getFoodArrayList();
+                ListIterator<Food> iterator = foodList.listIterator();
 
                 while (iterator.hasNext()) {
                     if (iterator.next().getId() == deleteId) {
@@ -148,7 +149,11 @@ public class FoodDetailActivity extends AppCompatActivity {
                     }
                 }
 
-                FoodList.getFoodList().setFoodArrayList(foodArrayList);
+                try {
+                    InternalStorage.writeObject(getApplicationContext(), "foodList", foodList);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
                 try {
                     Intent k = new Intent(getApplicationContext(), FoodListActivity.class);

@@ -41,6 +41,12 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        try {
+            deleteFoodPlanFood();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         createNavigation();
         try {
             fillFoodPlan();
@@ -51,16 +57,84 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void createNavigation(){
+    private void deleteFoodPlanFood() throws IOException, ClassNotFoundException {
+        List<Food> foodPlanList = (List<Food>) InternalStorage.readObject(getApplicationContext(), "foodPlanList");
+        Bundle deleteFoodBundle = getIntent().getExtras();
+        String deleteDay = deleteFoodBundle.getString("deleteDay");
+        int deletePosition = deleteFoodBundle.getInt("deletePosition");
+        final GridView gridMondayFoods = findViewById(R.id.gridMonday);
+        switch (deleteDay) {
+            case "MON":
+                // TODO i * 15 für weitere Wochen
+                if (deletePosition == 0) {
+                    foodPlanList.remove(0);
+                }
+                if (deletePosition == 1) {
+                    foodPlanList.remove(1);
+                }
+                if (deletePosition == 2) {
+                    foodPlanList.remove(2);
+                }
+                break;
+            case "TUE":
+                if (deletePosition == 0) {
+                    foodPlanList.remove(3);
+                }
+                if (deletePosition == 1) {
+                    foodPlanList.remove(4);
+                }
+                if (deletePosition == 2) {
+                    foodPlanList.remove(5);
+                }
+                break;
+            case "WED":
+                if (deletePosition == 0) {
+                    foodPlanList.remove(6);
+                }
+                if (deletePosition == 1) {
+                    foodPlanList.remove(7);
+                }
+                if (deletePosition == 2) {
+                    foodPlanList.remove(8);
+                }
+                break;
+            case "THU":
+                if (deletePosition == 0) {
+                    foodPlanList.remove(9);
+                }
+                if (deletePosition == 1) {
+                    foodPlanList.remove(10);
+                }
+                if (deletePosition == 2) {
+                    foodPlanList.remove(11);
+                }
+                break;
+            case "FRI":
+                if (deletePosition == 0) {
+                    foodPlanList.remove(12);
+                }
+                if (deletePosition == 1) {
+                    foodPlanList.remove(13);
+                }
+                if (deletePosition == 2) {
+                    foodPlanList.remove(14);
+                }
+                break;
+        }
+        InternalStorage.writeObject(getApplicationContext(), "foodPlanList", foodPlanList);
 
-        Button navButtonfoods =  findViewById(R.id.nav_foodsButton);
-        Button navButtonlogin =  findViewById(R.id.nav_loginButton);
+    }
 
-        SharedPreferences sp = getSharedPreferences("login",MODE_PRIVATE);
+    private void createNavigation() {
 
-        if ( sp.getBoolean("logged",false)){
+        Button navButtonfoods = findViewById(R.id.nav_foodsButton);
+        Button navButtonlogin = findViewById(R.id.nav_loginButton);
+
+        SharedPreferences sp = getSharedPreferences("login", MODE_PRIVATE);
+
+        if (sp.getBoolean("logged", false)) {
             navButtonlogin.setText(R.string.logout);
-        }else{
+        } else {
             navButtonlogin.setText(R.string.menu_login);
         }
 
@@ -74,11 +148,11 @@ public class MainActivity extends AppCompatActivity {
         navButtonlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences sp = getSharedPreferences("login",MODE_PRIVATE);
-                if ( sp.getBoolean("logged",false)){
-                    sp.edit().putBoolean("logged",false).apply();
-                    Toast.makeText(getApplicationContext(), R.string.logout_successfull ,Toast.LENGTH_LONG).show();
-                }else{
+                SharedPreferences sp = getSharedPreferences("login", MODE_PRIVATE);
+                if (sp.getBoolean("logged", false)) {
+                    sp.edit().putBoolean("logged", false).apply();
+                    Toast.makeText(getApplicationContext(), R.string.logout_successfull, Toast.LENGTH_LONG).show();
+                } else {
                     Intent k = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(k);
                 }
@@ -96,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         List<String> foodNameList = new ArrayList<String>();
-        for(Food food: foodList) {
+        for (Food food : foodList) {
             foodNameList.add(food.getName());
         }
 
@@ -108,17 +182,17 @@ public class MainActivity extends AppCompatActivity {
 
         final GridView gridMondayFoods = findViewById(R.id.gridMonday);
         // if (foodNameList.size() >= 1 + 15 * i
-        if(foodNameList.size() == 1) {
+        if (foodNameList.size() == 1) {
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                     getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(0, 1));
             gridMondayFoods.setAdapter(adapter);
         }
-        if(foodNameList.size() == 2) {
+        if (foodNameList.size() == 2) {
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                     getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(0, 2));
             gridMondayFoods.setAdapter(adapter);
         }
-        if(foodNameList.size() >= 3) {
+        if (foodNameList.size() >= 3) {
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                     getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(0, 3));
             gridMondayFoods.setAdapter(adapter);
@@ -131,9 +205,20 @@ public class MainActivity extends AppCompatActivity {
                 for (Food food : foodList) {
                     if (food.getName().equals(foodName)) {
                         Intent i = new Intent(getApplicationContext(), FoodPlanDetailActivity.class);
-                        Bundle bundle = new Bundle();
-                        bundle.putInt("foodId", food.getId());
-                        i.putExtras(bundle);
+                        Bundle positionBundle = new Bundle();
+                        positionBundle.putInt("foodId", food.getId());
+                        positionBundle.putString("day", "MON");
+                        positionBundle.putInt("position", position);
+                        i.putExtras(positionBundle);
+                        startActivity(i);
+                        finish();
+                    } else {
+                        Intent i = new Intent(getApplicationContext(), FoodPlanDetailActivity.class);
+                        Bundle positionBundle = new Bundle();
+                        positionBundle.putInt("foodId", -1);
+                        positionBundle.putString("day", "MON");
+                        positionBundle.putInt("position", position);
+                        i.putExtras(positionBundle);
                         startActivity(i);
                         finish();
                     }
@@ -143,17 +228,17 @@ public class MainActivity extends AppCompatActivity {
         });
 
         final GridView gridTuesdayFoods = findViewById(R.id.gridTuesday);
-        if(foodNameList.size() == 4) {
+        if (foodNameList.size() == 4) {
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                     getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(3, 4));
             gridTuesdayFoods.setAdapter(adapter);
         }
-        if(foodNameList.size() == 5) {
+        if (foodNameList.size() == 5) {
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                     getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(3, 5));
             gridTuesdayFoods.setAdapter(adapter);
         }
-        if(foodNameList.size() >= 6) {
+        if (foodNameList.size() >= 6) {
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                     getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(3, 6));
             gridTuesdayFoods.setAdapter(adapter);
@@ -161,6 +246,7 @@ public class MainActivity extends AppCompatActivity {
 
         gridTuesdayFoods.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             final List<Food> foodList = (List<Food>) InternalStorage.readObject(getApplicationContext(), "foodList");
+
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 int itemPosition = position;
@@ -168,9 +254,20 @@ public class MainActivity extends AppCompatActivity {
                 for (Food food : foodList) {
                     if (food.getName().equals(foodName)) {
                         Intent i = new Intent(getApplicationContext(), FoodPlanDetailActivity.class);
-                        Bundle bundle = new Bundle();
-                        bundle.putInt("foodId", food.getId());
-                        i.putExtras(bundle);
+                        Bundle positionBundle = new Bundle();
+                        positionBundle.putInt("foodId", food.getId());
+                        positionBundle.putString("day", "TUE");
+                        positionBundle.putInt("position", position);
+                        i.putExtras(positionBundle);
+                        startActivity(i);
+                        finish();
+                    } else {
+                        Intent i = new Intent(getApplicationContext(), FoodPlanDetailActivity.class);
+                        Bundle positionBundle = new Bundle();
+                        positionBundle.putInt("foodId", -1);
+                        positionBundle.putString("day", "TUE");
+                        positionBundle.putInt("position", position);
+                        i.putExtras(positionBundle);
                         startActivity(i);
                         finish();
                     }
@@ -180,17 +277,17 @@ public class MainActivity extends AppCompatActivity {
         });
 
         final GridView gridWednesdayFoods = findViewById(R.id.gridWednesday);
-        if(foodNameList.size() == 7) {
+        if (foodNameList.size() == 7) {
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                     getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(6, 7));
             gridWednesdayFoods.setAdapter(adapter);
         }
-        if(foodNameList.size() == 8) {
+        if (foodNameList.size() == 8) {
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                     getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(6, 8));
             gridWednesdayFoods.setAdapter(adapter);
         }
-        if(foodNameList.size() >= 9) {
+        if (foodNameList.size() >= 9) {
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                     getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(6, 9));
             gridWednesdayFoods.setAdapter(adapter);
@@ -198,6 +295,7 @@ public class MainActivity extends AppCompatActivity {
 
         gridWednesdayFoods.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             final List<Food> foodList = (List<Food>) InternalStorage.readObject(getApplicationContext(), "foodList");
+
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 int itemPosition = position;
@@ -205,9 +303,20 @@ public class MainActivity extends AppCompatActivity {
                 for (Food food : foodList) {
                     if (food.getName().equals(foodName)) {
                         Intent i = new Intent(getApplicationContext(), FoodPlanDetailActivity.class);
-                        Bundle bundle = new Bundle();
-                        bundle.putInt("foodId", food.getId());
-                        i.putExtras(bundle);
+                        Bundle positionBundle = new Bundle();
+                        positionBundle.putInt("foodId", food.getId());
+                        positionBundle.putString("day", "WED");
+                        positionBundle.putInt("position", position);
+                        i.putExtras(positionBundle);
+                        startActivity(i);
+                        finish();
+                    } else {
+                        Intent i = new Intent(getApplicationContext(), FoodPlanDetailActivity.class);
+                        Bundle positionBundle = new Bundle();
+                        positionBundle.putInt("foodId", -1);
+                        positionBundle.putString("day", "WED");
+                        positionBundle.putInt("position", position);
+                        i.putExtras(positionBundle);
                         startActivity(i);
                         finish();
                     }
@@ -216,17 +325,17 @@ public class MainActivity extends AppCompatActivity {
         });
 
         final GridView gridThursdayFoods = findViewById(R.id.gridThursday);
-        if(foodNameList.size() == 10) {
+        if (foodNameList.size() == 10) {
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                     getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(9, 10));
             gridThursdayFoods.setAdapter(adapter);
         }
-        if(foodNameList.size() == 11) {
+        if (foodNameList.size() == 11) {
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                     getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(9, 11));
             gridThursdayFoods.setAdapter(adapter);
         }
-        if(foodNameList.size() >= 12) {
+        if (foodNameList.size() >= 12) {
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                     getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(9, 12));
             gridThursdayFoods.setAdapter(adapter);
@@ -234,6 +343,7 @@ public class MainActivity extends AppCompatActivity {
 
         gridThursdayFoods.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             final List<Food> foodList = (List<Food>) InternalStorage.readObject(getApplicationContext(), "foodList");
+
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 int itemPosition = position;
@@ -241,9 +351,20 @@ public class MainActivity extends AppCompatActivity {
                 for (Food food : foodList) {
                     if (food.getName().equals(foodName)) {
                         Intent i = new Intent(getApplicationContext(), FoodPlanDetailActivity.class);
-                        Bundle bundle = new Bundle();
-                        bundle.putInt("foodId", food.getId());
-                        i.putExtras(bundle);
+                        Bundle positionBundle = new Bundle();
+                        positionBundle.putInt("foodId", food.getId());
+                        positionBundle.putString("day", "THU");
+                        positionBundle.putInt("position", position);
+                        i.putExtras(positionBundle);
+                        startActivity(i);
+                        finish();
+                    } else {
+                        Intent i = new Intent(getApplicationContext(), FoodPlanDetailActivity.class);
+                        Bundle positionBundle = new Bundle();
+                        positionBundle.putInt("foodId", -1);
+                        positionBundle.putString("day", "THU");
+                        positionBundle.putInt("position", position);
+                        i.putExtras(positionBundle);
                         startActivity(i);
                         finish();
                     }
@@ -252,19 +373,18 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
         final GridView gridFridayFoods = findViewById(R.id.gridFriday);
-        if(foodNameList.size() == 13) {
+        if (foodNameList.size() == 13) {
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                     getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(12, 13));
             gridFridayFoods.setAdapter(adapter);
         }
-        if(foodNameList.size() == 14) {
+        if (foodNameList.size() == 14) {
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                     getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(12, 14));
             gridFridayFoods.setAdapter(adapter);
         }
-        if(foodNameList.size() >= 15) {
+        if (foodNameList.size() >= 15) {
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                     getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(12, 15));
             gridFridayFoods.setAdapter(adapter);
@@ -272,6 +392,7 @@ public class MainActivity extends AppCompatActivity {
 
         gridFridayFoods.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             final List<Food> foodList = (List<Food>) InternalStorage.readObject(getApplicationContext(), "foodList");
+
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 int itemPosition = position;
@@ -279,9 +400,20 @@ public class MainActivity extends AppCompatActivity {
                 for (Food food : foodList) {
                     if (food.getName().equals(foodName)) {
                         Intent i = new Intent(getApplicationContext(), FoodPlanDetailActivity.class);
-                        Bundle bundle = new Bundle();
-                        bundle.putInt("foodId", food.getId());
-                        i.putExtras(bundle);
+                        Bundle positionBundle = new Bundle();
+                        positionBundle.putInt("foodId", food.getId());
+                        positionBundle.putString("day", "FRI");
+                        positionBundle.putInt("position", position);
+                        i.putExtras(positionBundle);
+                        startActivity(i);
+                        finish();
+                    } else {
+                        Intent i = new Intent(getApplicationContext(), FoodPlanDetailActivity.class);
+                        Bundle positionBundle = new Bundle();
+                        positionBundle.putInt("foodId", -1);
+                        positionBundle.putString("day", "FRI");
+                        positionBundle.putInt("position", position);
+                        i.putExtras(positionBundle);
                         startActivity(i);
                         finish();
                     }
