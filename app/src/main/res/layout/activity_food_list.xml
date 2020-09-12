@@ -14,7 +14,7 @@
         android:id="@+id/inputFoodname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/editText_nameOfFood"></EditText>
+        android:hint="@string/editText_nameOfFood"></EditText>
 
     <Button
         android:id="@+id/addButton"

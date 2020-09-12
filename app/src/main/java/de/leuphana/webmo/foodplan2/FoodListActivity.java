@@ -32,6 +32,31 @@ public class FoodListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_list);
 
+
+        try {
+            InternalStorage.readObject(this, "foodList");
+        } catch (IOException | ClassNotFoundException e){
+            ArrayList<Food> foodList = FoodList.getFoodList().getFoodArrayList();
+            try {
+                InternalStorage.writeObject(this, "foodList", foodList);
+            } catch (IOException i) {
+                i.printStackTrace();
+            }
+        }
+
+        createNavigation();
+
+        try {
+            fillFoodList();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void createNavigation() {
+
         Button navButtonplanfoods =  findViewById(R.id.foodplanButton);
         Button navButtonlogin =  findViewById(R.id.loginButton);
         Button navButtonsettings =  findViewById(R.id.settingsButton);
@@ -62,13 +87,6 @@ public class FoodListActivity extends AppCompatActivity {
                     Intent k = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(k);
                 }
-            }
-        });
-        navButtonsettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), SettingsActivity.class);
-                startActivity(i);
             }
         });
 

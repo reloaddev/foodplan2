@@ -2,7 +2,6 @@ package de.leuphana.webmo.foodplan2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -20,17 +19,17 @@ import de.leuphana.webmo.foodplan2.structure.Food;
 import de.leuphana.webmo.foodplan2.structure.FoodList;
 import de.leuphana.webmo.foodplan2.structure.Type;
 
-public class FoodDetailActivity extends AppCompatActivity {
+public class FoodplanDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_food_detail);
+        setContentView(R.layout.activity_foodplan_detail);
 
         Bundle bundle = getIntent().getExtras();
         int foodId = -1;
         if(bundle != null) {
-            foodId = bundle.getInt("foodId");
+                foodId = bundle.getInt("foodId");
         }
 
         List<Food> foodList = FoodList.getFoodList().getFoodArrayList();
@@ -53,44 +52,26 @@ public class FoodDetailActivity extends AppCompatActivity {
         final EditText foodTypeView = findViewById(R.id.foodTypeVal);
         foodTypeView.setText(food.getType().toString());
 
-        final Button saveButton = findViewById(R.id.saveButton);
+        //DetailButtons
         final Button deleteButton = findViewById(R.id.deleteButton);
         final Button backButton = findViewById(R.id.backButton);
 
-        final TextView result = findViewById((R.id.tvResult));
+
         //NavButtons
         final Button navButtonplanfoods =  findViewById(R.id.foodplanButton);
         final Button navButtonfoods =  findViewById(R.id.foodsButton);
         final Button navButtonlogin =  findViewById(R.id.loginButton);
-
+        final Button navButtonsettings =  findViewById(R.id.settingsButton);
 
         SharedPreferences sp = getSharedPreferences("login",MODE_PRIVATE);
         if ( sp.getBoolean("logged",false)){
-            saveButton.setVisibility(View.VISIBLE);
             deleteButton.setVisibility(View.VISIBLE);
             navButtonlogin.setText(R.string.logout);
-
         }else{
-            saveButton.setVisibility(View.INVISIBLE);
             deleteButton.setVisibility(View.INVISIBLE);
             navButtonlogin.setText(R.string.menu_login);
         }
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int id = Integer.parseInt(foodIdView.getText().toString());
-                String name = foodNameView.getText().toString();
-                float price = Float.parseFloat(foodPriceView.getText().toString());
-                String type = foodTypeView.getText().toString();
-                result.setText("ID: " + id + " | NAME: " + name + " | PRICE: " + price + " | " + type);
-                Food updatedFood = new Food(id, name, price, Type.valueOf(type));
-
-                ArrayList<Food> foodArrayList = FoodList.getFoodList().getFoodArrayList();
-                foodArrayList.add(updatedFood);
-                FoodList.getFoodList().setFoodArrayList(foodArrayList);
-            }
-        });
 
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,8 +108,6 @@ public class FoodDetailActivity extends AppCompatActivity {
                 }
             }
         });
-
-
 
         navButtonplanfoods.setOnClickListener(new View.OnClickListener() {
             @Override

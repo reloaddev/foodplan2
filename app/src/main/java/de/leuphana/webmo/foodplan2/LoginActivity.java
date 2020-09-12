@@ -50,14 +50,6 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        navButtonsettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), SettingsActivity.class);
-                startActivity(i);
-            }
-        });
-
     }
 
     private void validate (String userName, String userPassword){
