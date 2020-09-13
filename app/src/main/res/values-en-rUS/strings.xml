@@ -45,5 +45,15 @@
     <string name="current_week">Current week</string>
     <string name="next_week">Next week</string>
     <string name="week">"Week: "</string>
+    <string name="txt_foodSearch">Tap food to search</string>
+    <string name="txt_currentWeek">The food is available in this week.</string>
+    <string name="txt_nextWeek">The food is available in the next week.</string>
+    <string name="txt_secondWeek">The food is available in two weeks.</string>
+    <string name="thirdWeek">The food is available in three weeks.</string>
+    <string name="txt_fourthWeek">The food is available in four weeks.</string>
+    <string name="txt_fithWeek">The food is available in five weeks.</string>
+    <string name="txt_sixthWeek">The food is available in six weeks.</string>
+    <string name="txt_seventhWeek">The food is available in seven weeks.</string>
+    <string name="txt_noWeek">The food isn\'t available in the next seven weeks.</string>
 
 </resources>

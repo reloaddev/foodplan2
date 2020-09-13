@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:background="@color/colorPrimary"
+        android:elegantTextHeight="true"
+        android:text="@string/txt_foodSearch"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
+
+    <ListView
+        android:id="@+id/foodList"
+        android:layout_width="match_parent"
+        android:layout_height="460sp"
+        android:layout_marginVertical="10dp"></ListView>
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="5dp"
+
+        android:text="@string/button_back_foodplan" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        android:layout_marginTop="15sp">
+
+        <Button
+            android:id="@+id/nav_foodplanButton"
+            android:layout_width="90sp"
+            android:layout_height="50sp"
+            android:layout_gravity="top"
+            android:layout_marginStart="11sp"
+            android:layout_marginEnd="10sp"
+            android:background="@color/colorPrimary"
+            android:text="@string/menu_foodplan"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/nav_foodsButton"
+            android:layout_width="90sp"
+            android:layout_height="50sp"
+            android:layout_gravity="top"
+            android:layout_marginEnd="10sp"
+            android:background="@drawable/my_button_border"
+            android:text="@string/menu_foods"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/nav_loginButton"
+            android:layout_width="90sp"
+            android:layout_height="50sp"
+            android:layout_gravity="top"
+            android:layout_marginEnd="10sp"
+            android:background="@color/colorPrimary"
+            android:text="@string/menu_login"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/nav_searchButton"
+            android:layout_width="90sp"
+            android:layout_height="50sp"
+            android:layout_gravity="top"
+            android:layout_marginEnd="10sp"
+            android:background="@color/colorPrimary"
+            android:src="@drawable/foodsearchicon"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>

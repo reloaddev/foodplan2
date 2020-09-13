@@ -20,6 +20,7 @@ import java.util.List;
 
 import de.leuphana.webmo.foodplan2.structure.Food;
 
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -186,6 +187,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button navButtonfoods = findViewById(R.id.nav_foodsButton);
         Button navButtonlogin = findViewById(R.id.nav_loginButton);
+        ImageButton navButtonSearch = findViewById((R.id.nav_searchButton));
 
         SharedPreferences sp = getSharedPreferences("login", MODE_PRIVATE);
 
@@ -213,6 +215,13 @@ public class MainActivity extends AppCompatActivity {
                     Intent k = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(k);
                 }
+            }
+        });
+        navButtonSearch.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), FoodSearchActivity.class);
+                startActivity(i);
             }
         });
     }

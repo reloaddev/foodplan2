@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,6 +54,7 @@ public class FoodPlanDetailActivity extends AppCompatActivity {
         Button navButtonLogin = findViewById(R.id.nav_loginButton);
         Button navButtonFoods = findViewById(R.id.nav_foodsButton);
         Button deleteButton = findViewById(R.id.deleteButton);
+        ImageButton navButtonSearch = findViewById((R.id.nav_searchButton));
 
         SharedPreferences sp = getSharedPreferences("login", MODE_PRIVATE);
         if (sp.getBoolean("logged", false)) {
@@ -92,6 +94,13 @@ public class FoodPlanDetailActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+            }
+        });
+        navButtonSearch.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), FoodSearchActivity.class);
+                startActivity(i);
             }
         });
     }

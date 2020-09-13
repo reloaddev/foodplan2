@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,7 +47,7 @@ public class FoodDetailActivity extends AppCompatActivity {
         //NavButtons
         final Button navButtonPlanFoods = findViewById(R.id.nav_foodplanButton);
         final Button navButtonFoods = findViewById(R.id.nav_foodsButton);
-
+        ImageButton navButtonSearch = findViewById((R.id.nav_searchButton));
 
         navButtonPlanFoods.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +69,13 @@ public class FoodDetailActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+            }
+        });
+        navButtonSearch.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), FoodSearchActivity.class);
+                startActivity(i);
             }
         });
     }

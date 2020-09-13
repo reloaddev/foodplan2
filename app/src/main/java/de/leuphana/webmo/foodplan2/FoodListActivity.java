@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
@@ -60,6 +61,7 @@ public class FoodListActivity extends AppCompatActivity {
         Button navButtonlogin =  findViewById(R.id.nav_loginButton);
         final Button addButton = findViewById(R.id.addButton);
         final EditText inputFoodname = findViewById(R.id.inputFoodname);
+        ImageButton navButtonSearch = findViewById((R.id.nav_searchButton));
 
         SharedPreferences sp = getSharedPreferences("login",MODE_PRIVATE);
         if ( sp.getBoolean("logged",false)){
@@ -90,6 +92,13 @@ public class FoodListActivity extends AppCompatActivity {
                     Intent k = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(k);
                 }
+            }
+        });
+        navButtonSearch.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), FoodSearchActivity.class);
+                startActivity(i);
             }
         });
 
@@ -154,39 +163,6 @@ public class FoodListActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
-
-    private void configureSearchBar()throws IOException, ClassNotFoundException {
-      ListView listView = (ListView) findViewById(R.id.foodList);
-      //SearchView  editsearch = (SearchView) findViewById(R.id.searchView);
-
-        final List<Food> foodList = (List<Food>) InternalStorage.readObject(this, "foodList");
-        List<String> foodNameList = new ArrayList<String>();
-        for(Food food: foodList) {
-            foodNameList.add(food.getName());
-        }
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>
-                (getApplicationContext(), simple_list_item_1, foodNameList);
-
-        listView.setAdapter(adapter);
-
-        /*editsearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                String text = newText;
-
-                // adapter.filter(text);
-
-                return false;
-            }
-        });*/
-    }
-
-
 }
