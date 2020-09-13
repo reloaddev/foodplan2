@@ -44,14 +44,16 @@ public class MainActivity extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
         currentWeek = calendar.get(Calendar.WEEK_OF_YEAR);
         displayWeek = currentWeek + weekCounter;
-        text_weekno.setText("Week:" + displayWeek);
+        String weekText = getResources().getString(R.string.week) + String.valueOf(displayWeek);
+        text_weekno.setText(weekText);
 
         btn_currentWeek.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 weekCounter = 0;
                 displayWeek = currentWeek + weekCounter;
-                text_weekno.setText("Week:" + displayWeek);
+                String weekText = getResources().getString(R.string.week) + String.valueOf(displayWeek);
+                text_weekno.setText(weekText);
                 try {
                     fillFoodPlan();
                 } catch (IOException e) {
@@ -68,8 +70,8 @@ public class MainActivity extends AppCompatActivity {
                 if (weekCounter <= 7) {
                     weekCounter = weekCounter + 1;
                     displayWeek = currentWeek + weekCounter;
-
-                    text_weekno.setText("Week:" + displayWeek);
+                    String weekText = getResources().getString(R.string.week) + String.valueOf(displayWeek);
+                    text_weekno.setText(weekText);
                     //R.string.txt_week + displayweek
                     //TODO Ausgabe ändern
                     try {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">foodplan</string>
+    <string name="app_name">Essensplan Lüneburg</string>
     <string name="menu_home">Home</string>
     <string name="button_back">Zurück</string>
     <string name="button_delete">Löschen</string>
@@ -29,11 +29,11 @@
     <string name="txt_food_price">Preis</string>
     <string name="txt_food_type">Type</string>
 
-    <string name="txt_monday">MON</string>
-    <string name="txt_tuesday">DIE</string>
-    <string name="txt_wednesday">MIT</string>
-    <string name="txt_thursday">DON</string>
-    <string name="txt_friday">FRE</string>
+    <string name="txt_monday">Montag</string>
+    <string name="txt_tuesday">Dienstag</string>
+    <string name="txt_wednesday">Mittwoch</string>
+    <string name="txt_thursday">Donnerstag</string>
+    <string name="txt_friday">Freitag</string>
 
     <string name="logout">Ausloggen</string>
     <string name="nav_header_desc">Navigation header</string>
@@ -41,5 +41,9 @@
     <string name="button_addToFoodplan">Zum Foodplan hinzufügen</string>
     <string name="button_delete_foodplan">Löschen aus Essensplan</string>
     <string name="button_back_foodplan">Zurück zum Essensplan</string>
+    <string name="addedToFoodplan">Zum Essensplan hinzugefügt</string>
+    <string name="current_week">Aktuelle Woche</string>
+    <string name="next_week">Nächste Woche</string>
+    <string name="week">"Woche: "</string>
 
 </resources>

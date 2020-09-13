@@ -189,6 +189,7 @@ public class FoodDetailActivity extends AppCompatActivity {
                     ArrayList<Food> foodPlanList = (ArrayList<Food>) InternalStorage.readObject(getApplicationContext(), "foodPlanList");
                     foodPlanList.add(finalFood);
                     InternalStorage.writeObject(getApplicationContext(), "foodPlanList", foodPlanList);
+                    Toast.makeText(getApplicationContext(), R.string.addedToFoodplan, Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
