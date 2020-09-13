@@ -13,22 +13,76 @@ import android.widget.Button;
 import android.widget.GridView;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import de.leuphana.webmo.foodplan2.structure.Food;
 
+import android.widget.TextView;
 import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MAIN_ACTIVITY";
+    private int weekCounter;
+    private int currentWeek;
+    private int displayWeek;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Wochenrechner
+        final Button btn_currentWeek = findViewById(R.id.button_currentweek);
+        final TextView text_weekno = findViewById(R.id.text_weekno);
+        final Button btn_nextWeek = findViewById(R.id.button_nextWeek);
+        weekCounter = 0;
+        Calendar calendar = Calendar.getInstance();
+        currentWeek = calendar.get(Calendar.WEEK_OF_YEAR);
+        displayWeek = currentWeek + weekCounter;
+        text_weekno.setText("Week:" + displayWeek);
+
+        btn_currentWeek.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                weekCounter = 0;
+                displayWeek = currentWeek + weekCounter;
+                text_weekno.setText("Week:" + displayWeek);
+                try {
+                    fillFoodPlan();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        btn_nextWeek.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (weekCounter <= 7) {
+                    weekCounter = weekCounter + 1;
+                    displayWeek = currentWeek + weekCounter;
+
+                    text_weekno.setText("Week:" + displayWeek);
+                    //R.string.txt_week + displayweek
+                    //TODO Ausgabe ändern
+                    try {
+                        fillFoodPlan();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            }
+        });
 
         try {
             InternalStorage.readObject(this, "foodPlanList");
@@ -67,58 +121,58 @@ public class MainActivity extends AppCompatActivity {
         switch (deleteDay) {
             case "MON":
                 // TODO i * 15 für weitere Wochen
-                if (deletePosition == 0) {
-                    foodPlanList.remove(0);
+                if (deletePosition == (0 + weekCounter * 15)) {
+                    foodPlanList.remove(0 + weekCounter * 15);
                 }
-                if (deletePosition == 1) {
-                    foodPlanList.remove(1);
+                if (deletePosition == (1 + weekCounter * 15)) {
+                    foodPlanList.remove(1 + weekCounter * 15);
                 }
-                if (deletePosition == 2) {
-                    foodPlanList.remove(2);
+                if (deletePosition == (2 + weekCounter * 15)) {
+                    foodPlanList.remove(2 + weekCounter * 15);
                 }
                 break;
             case "TUE":
-                if (deletePosition == 0) {
-                    foodPlanList.remove(3);
+                if (deletePosition == (0 + weekCounter * 15)) {
+                    foodPlanList.remove(3 + weekCounter * 15);
                 }
-                if (deletePosition == 1) {
-                    foodPlanList.remove(4);
+                if (deletePosition == (1 + weekCounter * 15)) {
+                    foodPlanList.remove(4 + weekCounter * 15);
                 }
-                if (deletePosition == 2) {
-                    foodPlanList.remove(5);
+                if (deletePosition == (2 + weekCounter * 15)) {
+                    foodPlanList.remove(5 + weekCounter * 15);
                 }
                 break;
             case "WED":
-                if (deletePosition == 0) {
-                    foodPlanList.remove(6);
+                if (deletePosition == (0 + weekCounter * 15)) {
+                    foodPlanList.remove(6 + weekCounter * 15);
                 }
-                if (deletePosition == 1) {
-                    foodPlanList.remove(7);
+                if (deletePosition == (1 + weekCounter * 15)) {
+                    foodPlanList.remove(7 + weekCounter * 15);
                 }
-                if (deletePosition == 2) {
-                    foodPlanList.remove(8);
+                if (deletePosition == (2 + weekCounter * 15)) {
+                    foodPlanList.remove(8 + weekCounter * 15);
                 }
                 break;
             case "THU":
-                if (deletePosition == 0) {
-                    foodPlanList.remove(9);
+                if (deletePosition == (0 + weekCounter * 15)) {
+                    foodPlanList.remove(9 + weekCounter * 15);
                 }
-                if (deletePosition == 1) {
-                    foodPlanList.remove(10);
+                if (deletePosition == (1 + weekCounter * 15)) {
+                    foodPlanList.remove(10 + weekCounter * 15);
                 }
-                if (deletePosition == 2) {
-                    foodPlanList.remove(11);
+                if (deletePosition == (2 + weekCounter * 15)) {
+                    foodPlanList.remove(11 + weekCounter * 15);
                 }
                 break;
             case "FRI":
-                if (deletePosition == 0) {
-                    foodPlanList.remove(12);
+                if (deletePosition == (0 + weekCounter * 15)) {
+                    foodPlanList.remove(12 + weekCounter * 15);
                 }
-                if (deletePosition == 1) {
-                    foodPlanList.remove(13);
+                if (deletePosition == (1 + weekCounter * 15)) {
+                    foodPlanList.remove(13 + weekCounter * 15);
                 }
-                if (deletePosition == 2) {
-                    foodPlanList.remove(14);
+                if (deletePosition == (2 + weekCounter * 15)) {
+                    foodPlanList.remove(14 + weekCounter * 15);
                 }
                 break;
         }
@@ -180,22 +234,30 @@ public class MainActivity extends AppCompatActivity {
 
     private void fillFoodPlanRows(List<String> foodNameList) throws IOException, ClassNotFoundException {
         final List<Food> foodList = (List<Food>) InternalStorage.readObject(getApplicationContext(), "foodList");
+        // Empty list before refilling
+        final List<String> deleteFoodNameList = new ArrayList<String>();
 
         final GridView gridMondayFoods = findViewById(R.id.gridMonday);
-        // if (foodNameList.size() >= 1 + 15 * i
-        if (foodNameList.size() == 1) {
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                    getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(0, 1));
+        /*ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                getApplicationContext(), android.R.layout.simple_list_item_1, deleteFoodNameList.subList(0 + weekCounter * 15, 3 + weekCounter * 15));
+        */
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, deleteFoodNameList);
+        gridMondayFoods.setAdapter(adapter);
+        adapter.clear();
+
+        if (foodNameList.size() == (1 + weekCounter * 15)) {
+            adapter = new ArrayAdapter<String>(
+                    getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(0 + weekCounter * 15, 1 + weekCounter * 15));
             gridMondayFoods.setAdapter(adapter);
         }
-        if (foodNameList.size() == 2) {
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                    getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(0, 2));
+        if (foodNameList.size() == (2 + weekCounter * 15)) {
+            adapter = new ArrayAdapter<String>(
+                    getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(0 + weekCounter * 15, 2 + weekCounter * 15));
             gridMondayFoods.setAdapter(adapter);
         }
-        if (foodNameList.size() >= 3) {
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                    getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(0, 3));
+        if (foodNameList.size() >= (3 + weekCounter * 15)) {
+            adapter = new ArrayAdapter<String>(
+                    getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(0 + weekCounter * 15, 3 + weekCounter * 15));
             gridMondayFoods.setAdapter(adapter);
         }
         gridMondayFoods.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -231,19 +293,23 @@ public class MainActivity extends AppCompatActivity {
         });
 
         final GridView gridTuesdayFoods = findViewById(R.id.gridTuesday);
-        if (foodNameList.size() == 4) {
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                    getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(3, 4));
+        adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, deleteFoodNameList);
+        gridTuesdayFoods.setAdapter(adapter);
+        adapter.clear();
+
+        if (foodNameList.size() == (4 + weekCounter * 15)) {
+            adapter = new ArrayAdapter<String>(
+                    getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(3 + weekCounter * 15, 4 + weekCounter * 15));
             gridTuesdayFoods.setAdapter(adapter);
         }
-        if (foodNameList.size() == 5) {
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                    getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(3, 5));
+        if (foodNameList.size() == (5 + weekCounter * 15)) {
+            adapter = new ArrayAdapter<String>(
+                    getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(3 + weekCounter * 15, 5 + weekCounter * 15));
             gridTuesdayFoods.setAdapter(adapter);
         }
-        if (foodNameList.size() >= 6) {
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                    getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(3, 6));
+        if (foodNameList.size() >= (6 + weekCounter * 15)) {
+            adapter = new ArrayAdapter<String>(
+                    getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(3 + weekCounter * 15, 6 + weekCounter * 15));
             gridTuesdayFoods.setAdapter(adapter);
         }
 
@@ -283,19 +349,23 @@ public class MainActivity extends AppCompatActivity {
         });
 
         final GridView gridWednesdayFoods = findViewById(R.id.gridWednesday);
-        if (foodNameList.size() == 7) {
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                    getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(6, 7));
+        adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, deleteFoodNameList);
+        gridWednesdayFoods.setAdapter(adapter);
+        adapter.clear();
+
+        if (foodNameList.size() == (7 + weekCounter * 15)) {
+            adapter = new ArrayAdapter<String>(
+                    getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(6 + weekCounter * 15, 7 + weekCounter * 15));
             gridWednesdayFoods.setAdapter(adapter);
         }
-        if (foodNameList.size() == 8) {
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                    getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(6, 8));
+        if (foodNameList.size() == (8 + weekCounter * 15)) {
+            adapter = new ArrayAdapter<String>(
+                    getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(6 + weekCounter * 15, 8 + weekCounter * 15));
             gridWednesdayFoods.setAdapter(adapter);
         }
-        if (foodNameList.size() >= 9) {
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                    getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(6, 9));
+        if (foodNameList.size() >= (9 + weekCounter * 15)) {
+            adapter = new ArrayAdapter<String>(
+                    getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(6 + weekCounter * 15, 9 + weekCounter * 15));
             gridWednesdayFoods.setAdapter(adapter);
         }
 
@@ -334,19 +404,22 @@ public class MainActivity extends AppCompatActivity {
         });
 
         final GridView gridThursdayFoods = findViewById(R.id.gridThursday);
-        if (foodNameList.size() == 10) {
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                    getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(9, 10));
+        adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, deleteFoodNameList);
+        gridThursdayFoods.setAdapter(adapter);
+        adapter.clear();
+        if (foodNameList.size() == (10 + weekCounter * 15)) {
+            adapter = new ArrayAdapter<String>(
+                    getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(9 + weekCounter * 15, 10 + weekCounter * 15));
             gridThursdayFoods.setAdapter(adapter);
         }
-        if (foodNameList.size() == 11) {
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                    getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(9, 11));
+        if (foodNameList.size() == (11 + weekCounter * 15)) {
+            adapter = new ArrayAdapter<String>(
+                    getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(9 + weekCounter * 15, 11 + weekCounter * 15));
             gridThursdayFoods.setAdapter(adapter);
         }
-        if (foodNameList.size() >= 12) {
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                    getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(9, 12));
+        if (foodNameList.size() >= (12 + weekCounter * 15)) {
+            adapter = new ArrayAdapter<String>(
+                    getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(9 + weekCounter * 15, 12 + weekCounter * 15));
             gridThursdayFoods.setAdapter(adapter);
         }
 
@@ -386,19 +459,22 @@ public class MainActivity extends AppCompatActivity {
 
 
         final GridView gridFridayFoods = findViewById(R.id.gridFriday);
-        if (foodNameList.size() == 13) {
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                    getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(12, 13));
+        adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, deleteFoodNameList);
+        gridFridayFoods.setAdapter(adapter);
+        adapter.clear();
+        if (foodNameList.size() == (13 + weekCounter * 15)) {
+            adapter = new ArrayAdapter<String>(
+                    getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(12 + weekCounter * 15, 13 + weekCounter * 15));
             gridFridayFoods.setAdapter(adapter);
         }
-        if (foodNameList.size() == 14) {
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                    getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(12, 14));
+        if (foodNameList.size() == (14 + weekCounter * 15)) {
+            adapter = new ArrayAdapter<String>(
+                    getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(12 + weekCounter * 15, 14 + weekCounter * 15));
             gridFridayFoods.setAdapter(adapter);
         }
-        if (foodNameList.size() >= 15) {
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                    getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(12, 15));
+        if (foodNameList.size() >= (15 + weekCounter * 15)) {
+            adapter = new ArrayAdapter<String>(
+                    getApplicationContext(), android.R.layout.simple_list_item_1, foodNameList.subList(12 + weekCounter * 15, 15 + weekCounter * 15));
             gridFridayFoods.setAdapter(adapter);
         }
 
