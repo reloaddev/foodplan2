@@ -8,7 +8,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="25sp"
         android:background="@color/colorPrimary"
         android:text="@string/txt_monday"
         android:textSize="20dp"
@@ -18,12 +18,12 @@
     <GridView
         android:id="@+id/gridMonday"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="70sp"
         android:numColumns="3" />
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="25sp"
         android:background="@color/colorPrimary"
         android:text="@string/txt_tuesday"
         android:textSize="20dp"
@@ -33,12 +33,12 @@
     <GridView
         android:id="@+id/gridTuesday"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="70sp"
         android:numColumns="3" />
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="25sp"
         android:background="@color/colorPrimary"
         android:text="@string/txt_wednesday"
         android:textSize="20dp"
@@ -48,12 +48,12 @@
     <GridView
         android:id="@+id/gridWednesday"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="70sp"
         android:numColumns="3" />
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="25sp"
         android:background="@color/colorPrimary"
         android:text="@string/txt_thursday"
         android:textSize="20dp"
@@ -63,12 +63,12 @@
     <GridView
         android:id="@+id/gridThursday"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="70sp"
         android:numColumns="3" />
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="25sp"
         android:background="@color/colorPrimary"
         android:text="@string/txt_friday"
         android:textSize="20dp"
@@ -78,25 +78,25 @@
     <GridView
         android:id="@+id/gridFriday"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:numColumns="3" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="39dp">
+        android:layout_height="40sp">
 
         <Button
             android:id="@+id/button_currentweek"
             android:layout_width="129dp"
-            android:layout_height="30sp"
+            android:layout_height="match_parent"
             android:background="@color/colorPrimary"
-            android:text="current Week"
+            android:text="@string/current_week"
             android:textColor="@android:color/white" />
 
         <TextView
             android:id="@+id/text_weekno"
             android:layout_width="wrap_content"
-            android:layout_height="30sp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/my_button_border"
             android:gravity="center_horizontal|center_vertical"
@@ -108,10 +108,10 @@
         <Button
             android:id="@+id/button_nextWeek"
             android:layout_width="wrap_content"
-            android:layout_height="30sp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/colorPrimary"
-            android:text="next Week"
+            android:text="@string/next_week"
             android:textColor="@android:color/white" />
 
     </LinearLayout>
@@ -121,15 +121,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="bottom"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginTop="15sp">
 
         <Button
             android:id="@+id/nav_foodplanButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="90sp"
+            android:layout_height="50sp"
             android:layout_gravity="top"
             android:layout_marginStart="11sp"
-            android:layout_marginEnd="11sp"
+            android:layout_marginEnd="10sp"
             android:background="@drawable/my_button_border"
             android:text="@string/menu_foodplan"
             android:textColor="@color/colorPrimary"
@@ -137,10 +138,10 @@
 
         <Button
             android:id="@+id/nav_foodsButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="90sp"
+            android:layout_height="50sp"
             android:layout_gravity="top"
-            android:layout_marginEnd="14sp"
+            android:layout_marginEnd="10sp"
             android:background="@color/colorPrimary"
             android:text="@string/menu_foods"
             android:textColor="@android:color/white"
@@ -148,23 +149,23 @@
 
         <Button
             android:id="@+id/nav_loginButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="90sp"
+            android:layout_height="50sp"
             android:layout_gravity="top"
-            android:layout_marginEnd="17sp"
+            android:layout_marginEnd="10sp"
             android:background="@color/colorPrimary"
             android:text="@string/menu_login"
             android:textColor="@android:color/white"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/nav_settingsButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageButton
+            android:id="@+id/nav_searchButton"
+            android:layout_width="90sp"
+            android:layout_height="50sp"
             android:layout_gravity="top"
-            android:layout_marginEnd="11sp"
+            android:layout_marginEnd="10sp"
             android:background="@color/colorPrimary"
-            android:text="@string/menu_settings"
+            android:src="@drawable/foodsearchicon"
             android:textColor="@android:color/white"
             android:textStyle="bold" />
     </LinearLayout>

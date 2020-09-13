@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">foodplan</string>
+    <string name="app_name">Foodplan Lüneburg</string>
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="button_back">Back</string>
@@ -30,16 +30,20 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
 
-    <string name="txt_monday">MON</string>
-    <string name="txt_tuesday">TUE</string>
-    <string name="txt_wednesday">WED</string>
-    <string name="txt_thursday">THU</string>
-    <string name="txt_friday">FRI</string>
+    <string name="txt_monday">Monday</string>
+    <string name="txt_tuesday">Tuesday</string>
+    <string name="txt_wednesday">Wednesday</string>
+    <string name="txt_thursday">Thursday</string>
+    <string name="txt_friday">Friday</string>
 
     <string name="logout">Logout</string>
     <string name="logout_successfull">Logout Successfull</string>
     <string name="button_addToFoodplan">Add to foodplan</string>
     <string name="button_delete_foodplan">Delete from foodplan</string>
     <string name="button_back_foodplan">Back to foodplan</string>
+    <string name="addedToFoodplan">Added to foodplan</string>
+    <string name="current_week">Current week</string>
+    <string name="next_week">Next week</string>
+    <string name="week">"Week: "</string>
 
 </resources>
