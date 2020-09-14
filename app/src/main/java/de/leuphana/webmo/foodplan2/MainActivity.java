@@ -36,13 +36,42 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Calendar calendar = Calendar.getInstance();
+        currentWeek = calendar.get(Calendar.WEEK_OF_YEAR);
+
+        //Delete @ the next week the last week
+        SharedPreferences df = getSharedPreferences("week", MODE_PRIVATE);
+        if(df == null){
+            df.edit().putInt("week", currentWeek).apply();
+        }
+        if(currentWeek != (df.getInt("week", currentWeek))){
+            df.edit().putInt("week", currentWeek).apply();
+            List<Food> foodPlanList = null;
+            try {
+                foodPlanList = (List<Food>) InternalStorage.readObject(getApplicationContext(), "foodPlanList");
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+            for( int i = 0; i <= 14 ; i++){
+                try {
+                    foodPlanList.remove(0);
+                } catch (Exception e){
+                    break;
+                }
+            }
+            try {
+                InternalStorage.writeObject(getApplicationContext(), "foodPlanList", foodPlanList);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
         // Wochenrechner
         final Button btn_currentWeek = findViewById(R.id.button_currentweek);
         final TextView text_weekno = findViewById(R.id.text_weekno);
         final Button btn_nextWeek = findViewById(R.id.button_nextWeek);
         weekCounter = 0;
-        Calendar calendar = Calendar.getInstance();
-        currentWeek = calendar.get(Calendar.WEEK_OF_YEAR);
+
         displayWeek = currentWeek + weekCounter;
         String weekText = getResources().getString(R.string.week) + String.valueOf(displayWeek);
         text_weekno.setText(weekText);
