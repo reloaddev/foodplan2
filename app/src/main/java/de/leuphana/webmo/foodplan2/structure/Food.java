@@ -9,9 +9,9 @@ public class Food implements Serializable {
     private int id;
     private String name;
     private float price;
-    private Type type;
+    private String type;
 
-    public Food (int id, String name, float price, Type type){
+    public Food (int id, String name, float price, String type){
         this.id = id;
         this.name = name;
         this.price = price;
@@ -23,7 +23,7 @@ public class Food implements Serializable {
         return name;
     }
     public float getPrice(){ return price; }
-    public Type getType() {return type; }
+    public String getType() {return type; }
 
     //With this Method we will never get Id´s lower than the maxId
     //But it´s enough for our context

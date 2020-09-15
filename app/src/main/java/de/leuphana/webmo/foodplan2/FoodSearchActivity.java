@@ -133,7 +133,7 @@ public class FoodSearchActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                float i = 0;
+                float i = 0.00f;
                 boolean found = false;
                 for(Food food: foodPlanList) {
                     if(foodName.equals(food.getName())){
@@ -143,28 +143,27 @@ public class FoodSearchActivity extends AppCompatActivity {
                     i++;
                 }
                 if(found==false){
-                    i = 0;
+                    i = -1;
                 }
 
-                i = i/15;
-
+                i = i/15.00f;
                 // Show when the food will be available the next time
                 // Therefore: find position in foodplan and fetch the appropriate week
-                if(i>0 && i<=1) {
+                if(i>=0 && i<1) {
                     Toast.makeText(getApplicationContext(), R.string.txt_currentWeek, Toast.LENGTH_LONG).show();
-                } else if (i>1 && i<=2) {
+                } else if (i>=1 && i<2) {
                     Toast.makeText(getApplicationContext(), R.string.txt_nextWeek, Toast.LENGTH_LONG).show();
-                } else if (i>2 && i<=3) {
+                } else if (i>=2 && i<3) {
                     Toast.makeText(getApplicationContext(), R.string.txt_secondWeek, Toast.LENGTH_LONG).show();
-                } else if (i>3 && i<=4) {
+                } else if (i>=3 && i<4) {
                     Toast.makeText(getApplicationContext(), R.string.thirdWeek, Toast.LENGTH_LONG).show();
-                } else if (i>4 && i<=5) {
+                } else if (i>=4 && i<5) {
                     Toast.makeText(getApplicationContext(), R.string.txt_fourthWeek, Toast.LENGTH_LONG).show();
-                } else if (i>5 && i<=6) {
+                } else if (i>=5 && i<6) {
                     Toast.makeText(getApplicationContext(), R.string.txt_fithWeek, Toast.LENGTH_LONG).show();
-                } else if (i>6 && i<=7) {
+                } else if (i>=6 && i<7) {
                     Toast.makeText(getApplicationContext(), R.string.txt_sixthWeek, Toast.LENGTH_LONG).show();
-                } else if (i>7 && i<=8) {
+                } else if (i>=7 && i<8) {
                     Toast.makeText(getApplicationContext(), R.string.txt_seventhWeek, Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(getApplicationContext(), R.string.txt_noWeek, Toast.LENGTH_LONG).show();

@@ -76,6 +76,7 @@
                 android:layout_weight="1"
                 android:background="#ffffff"
                 android:gravity="center"
+                android:inputType="numberDecimal"
                 android:text="2,50 €" />
         </TableRow>
 

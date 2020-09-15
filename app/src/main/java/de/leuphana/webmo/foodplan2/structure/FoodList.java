@@ -10,26 +10,26 @@ public class FoodList implements Serializable {
 
     private FoodList() {
 
-        Food NudelnMitTomatensauce = new Food(1, "Nudeln mit Tomatensauce", (float) 1.5, Type.VEGAN);
-        Food KaiserschmarrnMitSchattenmorellen = new Food(2, "Kaiserschmarrn mit Schattenmorellen", (float) 2.4, Type.VEGETARIAN);
-        Food BockwurstMitSenf = new Food(3, "Bockwurst mit Senf", (float) 3.7, Type.MEAT);
-        Food BrasilianischerFischeintopf = new Food(4, "Brasilianischer Fischeintopf", (float) 3.0, Type.FISH);
-        Food VegetarischeLasagneMitSojahack = new Food(5, "Vegetarische Lasagne mit Sojahack", (float) 2.3, Type.VEGETARIAN);
-        Food KartoffelspaltenMitKnoblauchdip = new Food(6, "Kartoffelspalten mit Knoblauchdip", (float) 1.5, Type.VEGETARIAN);
-        Food KarottensticksMitTomatenreis = new Food(7, "Karottensticks mit Tomatenreis", (float) 2.2, Type.VEGAN);
-        Food KohlwurstMitGrünkohl = new Food(8, "Kohlwurst mit Grünkohl", (float) 3.4, Type.MEAT);
-        Food Sommernudeln = new Food(9, "Sommernudeln", (float) 2.1, Type.VEGAN);
-        Food BunterSalatMitPinienkernen = new Food(10, "Bunter Salat mit Pinienkernen", (float) 1.8, Type.VEGAN);
-        Food FischNuggetsMitRemoulade = new Food(11, "Fisch-Nuggets mit Remoulade", (float) 1.9, Type.FISH);
-        Food CurrywurstMitPommes = new Food(12, "Currywurst mit Pommes", (float) 1.8, Type.MEAT);
-        Food FrühlingsrollenMitSweetChiliSauce = new Food(13, "Frühlingsrollen mit Sweet-Chili-Sauce", (float) 1.7, Type.VEGAN);
-        Food SojagyrosMitJoghurtDip = new Food(14, "Sojagyros mit Joghurt-Dip", (float) 2.3, Type.VEGETARIAN);
-        Food NudelnMitSpinatKuhfetaSauce = new Food(15, "Nudeln mit Spinat-Kuhfeta-Sauce", (float) 1.8, Type.VEGETARIAN);
-        Food SchweineschnitzelMitKartoffeln = new Food(16, "Schweineschnitzel mit Kartoffeln", (float) 2.8, Type.MEAT);
-        Food DorschfiletMitSalzkartoffeln = new Food(17, "Dorschfilet mit Salzkartoffeln", (float) 3.1, Type.FISH);
-        Food BratwurstMitNudelsalat = new Food(18, "Bratwurst mit Nudelsalat", (float) 3.0, Type.MEAT);
-        Food AsiaWokGemüseMitReis = new Food(19, "Asia Wok-Gemüse mit Reis", (float) 2.2, Type.VEGAN);
-        Food RumpsteakMitBratkartoffeln = new Food(20, "Rumpsteak mit Bratkartoffeln", (float) 4.5, Type.MEAT);
+        Food NudelnMitTomatensauce = new Food(1, "Nudeln mit Tomatensauce", (float) 1.5, "VEGAN");
+        Food KaiserschmarrnMitSchattenmorellen = new Food(2, "Kaiserschmarrn mit Schattenmorellen", (float) 2.4, "VEGETARIAN");
+        Food BockwurstMitSenf = new Food(3, "Bockwurst mit Senf", (float) 3.7, "MEAT");
+        Food BrasilianischerFischeintopf = new Food(4, "Brasilianischer Fischeintopf", (float) 3.0, "FISH");
+        Food VegetarischeLasagneMitSojahack = new Food(5, "Vegetarische Lasagne mit Sojahack", (float) 2.3, "VEGETARIAN");
+        Food KartoffelspaltenMitKnoblauchdip = new Food(6, "Kartoffelspalten mit Knoblauchdip", (float) 1.5, "VEGETARIAN");
+        Food KarottensticksMitTomatenreis = new Food(7, "Karottensticks mit Tomatenreis", (float) 2.2, "VEGAN");
+        Food KohlwurstMitGrünkohl = new Food(8, "Kohlwurst mit Grünkohl", (float) 3.4, "MEAT");
+        Food Sommernudeln = new Food(9, "Sommernudeln", (float) 2.1, "VEGAN");
+        Food BunterSalatMitPinienkernen = new Food(10, "Bunter Salat mit Pinienkernen", (float) 1.8, "VEGAN");
+        Food FischNuggetsMitRemoulade = new Food(11, "Fisch-Nuggets mit Remoulade", (float) 1.9, "FISH");
+        Food CurrywurstMitPommes = new Food(12, "Currywurst mit Pommes", (float) 1.8, "MEAT");
+        Food FrühlingsrollenMitSweetChiliSauce = new Food(13, "Frühlingsrollen mit Sweet-Chili-Sauce", (float) 1.7, "VEGAN");
+        Food SojagyrosMitJoghurtDip = new Food(14, "Sojagyros mit Joghurt-Dip", (float) 2.3, "VEGETARIAN");
+        Food NudelnMitSpinatKuhfetaSauce = new Food(15, "Nudeln mit Spinat-Kuhfeta-Sauce", (float) 1.8, "VEGETARIAN");
+        Food SchweineschnitzelMitKartoffeln = new Food(16, "Schweineschnitzel mit Kartoffeln", (float) 2.8, "MEAT");
+        Food DorschfiletMitSalzkartoffeln = new Food(17, "Dorschfilet mit Salzkartoffeln", (float) 3.1, "FISH");
+        Food BratwurstMitNudelsalat = new Food(18, "Bratwurst mit Nudelsalat", (float) 3.0, "MEAT");
+        Food AsiaWokGemüseMitReis = new Food(19, "Asia Wok-Gemüse mit Reis", (float) 2.2, "VEGAN");
+        Food RumpsteakMitBratkartoffeln = new Food(20, "Rumpsteak mit Bratkartoffeln", (float) 4.5, "MEAT");
 
         foodArrayList.add(NudelnMitTomatensauce);
         foodArrayList.add(KaiserschmarrnMitSchattenmorellen);

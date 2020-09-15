@@ -82,7 +82,7 @@ public class FoodDetailActivity extends AppCompatActivity {
 
     public void createFoodDetailView(int foodId) throws IOException, ClassNotFoundException {
         final List<Food> foodList = (List<Food>) InternalStorage.readObject(getApplicationContext(), "foodList");
-        Food food = new Food(-1, "Undefined", 0.00f, Type.NOTASSIGNED);
+        Food food = new Food(-1, "Undefined", 0.00f, "NOTASSIGNED");
         for (Food foodIterator : foodList) {
             if (foodIterator.getId() == foodId) {
                 food = foodIterator;
@@ -146,7 +146,7 @@ public class FoodDetailActivity extends AppCompatActivity {
                 String name = foodNameView.getText().toString();
                 float price = Float.parseFloat(foodPriceView.getText().toString());
                 String type = foodTypeView.getText().toString();
-                Food updatedFood = new Food(id, name, price, Type.valueOf(type));
+                Food updatedFood = new Food(id, name, price, type);
 
                 foodList.add(updatedFood);
                 try {

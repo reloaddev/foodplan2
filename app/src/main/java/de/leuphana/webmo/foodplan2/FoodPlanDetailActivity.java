@@ -20,7 +20,6 @@ import java.util.ListIterator;
 
 import de.leuphana.webmo.foodplan2.structure.Food;
 import de.leuphana.webmo.foodplan2.structure.FoodList;
-import de.leuphana.webmo.foodplan2.structure.Type;
 
 public class FoodPlanDetailActivity extends AppCompatActivity {
 
@@ -111,7 +110,7 @@ public class FoodPlanDetailActivity extends AppCompatActivity {
 
     private void createFoodDetailView(int foodId, final String deleteDay, final int deletePosition) throws IOException, ClassNotFoundException {
         final List<Food> foodList = (List<Food>) InternalStorage.readObject(getApplicationContext(), "foodList");
-        Food food = new Food(-1, "Undefined", 0.00f, Type.NOTASSIGNED);
+        Food food = new Food(-1, "Undefined", 0.00f, "NOTASSIGNED");
         for (Food foodIterator : foodList) {
             if (foodIterator.getId() == foodId) {
                 food = foodIterator;
@@ -149,7 +148,7 @@ public class FoodPlanDetailActivity extends AppCompatActivity {
                 SharedPreferences sp = getSharedPreferences("login", MODE_PRIVATE);
                 if (sp.getBoolean("logged", false)) {
                     sp.edit().putBoolean("logged", false).apply();
-                    Toast.makeText(getApplicationContext(), R.string.logout_successfull, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.logout_successfull, Toast.LENGTH_SHORT).show();
                 } else {
                     Intent k = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(k);
