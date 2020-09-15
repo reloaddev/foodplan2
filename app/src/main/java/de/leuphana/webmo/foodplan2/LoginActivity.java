@@ -88,46 +88,46 @@ public class LoginActivity extends AppCompatActivity {
         switch(userName){
             case "jonas":
                 if(userPassword.equals("jonas")){
-                    Toast.makeText(getApplicationContext(), R.string.login_successfull ,Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.login_successfull ,Toast.LENGTH_SHORT).show();
                     sp.edit().putBoolean("logged",true).apply();
                     changeFragment();
                 }else{
-                    Toast.makeText(getApplicationContext(), R.string.login_unsuccessfull, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.login_unsuccessfull, Toast.LENGTH_SHORT).show();
                     sp.edit().putBoolean("logged",false).apply();
                 }
                 break;
             case "henrik":
                 if(userPassword.equals("henrik")){
-                    Toast.makeText(getApplicationContext(), R.string.login_successfull ,Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.login_successfull ,Toast.LENGTH_SHORT).show();
                     sp.edit().putBoolean("logged",true).apply();
                     changeFragment();
                 }else{
-                    Toast.makeText(getApplicationContext(), R.string.login_unsuccessfull, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.login_unsuccessfull, Toast.LENGTH_SHORT).show();
                     sp.edit().putBoolean("logged",false).apply();
                 }
                 break;
             case "max":
                 if(userPassword.equals("max")){
-                    Toast.makeText(getApplicationContext(), R.string.login_successfull ,Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.login_successfull ,Toast.LENGTH_SHORT).show();
                     sp.edit().putBoolean("logged",true).apply();
                     changeFragment();
                 }else{
-                    Toast.makeText(getApplicationContext(), R.string.login_unsuccessfull, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.login_unsuccessfull, Toast.LENGTH_SHORT).show();
                     sp.edit().putBoolean("logged",false).apply();
                 }
                 break;
             case "slotos":
                 if(userPassword.equals("slotos")){
-                    Toast.makeText(getApplicationContext(), R.string.login_successfull ,Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.login_successfull ,Toast.LENGTH_SHORT).show();
                     sp.edit().putBoolean("logged",true).apply();
                     changeFragment();
                 }else{
-                    Toast.makeText(getApplicationContext(), R.string.login_unsuccessfull, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.login_unsuccessfull, Toast.LENGTH_SHORT).show();
                     sp.edit().putBoolean("logged",false).apply();
                 }
                 break;
             default:
-                Toast.makeText(getApplicationContext(), R.string.login_unsuccessfull, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), R.string.login_unsuccessfull, Toast.LENGTH_SHORT).show();
                 sp.edit().putBoolean("logged",false).apply();
         }
 

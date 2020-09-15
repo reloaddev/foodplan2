@@ -87,7 +87,11 @@ public class FoodListActivity extends AppCompatActivity {
                 SharedPreferences sp = getSharedPreferences("login",MODE_PRIVATE);
                 if ( sp.getBoolean("logged",false)){
                     sp.edit().putBoolean("logged",false).apply();
-                    Toast.makeText(getApplicationContext(), R.string.logout_successfull ,Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), R.string.logout_successfull ,Toast.LENGTH_SHORT).show();
+                    finish();
+                    overridePendingTransition(0, 0);
+                    startActivity(getIntent());
+                    overridePendingTransition(0,0);
                 }else{
                     Intent k = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(k);
